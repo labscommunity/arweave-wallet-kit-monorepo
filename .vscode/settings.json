@@ -1,0 +1,17 @@
+{
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "eslint.workingDirectories": [{ "mode": "auto" }],
+    "editor.codeActionsOnSave": { "source.fixAll": "always" },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": true,
+    "files.insertFinalNewline": true,
+    "files.exclude": {
+      "pnpm-lock.yaml": true,
+      "**/node_modules": true,
+      "**/.turbo": true,
+      "**/.build": true
+    }
+  }
