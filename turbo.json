@@ -1,14 +1,23 @@
 {
-  "$schema": "https://turbo.build/schema.json",
+  "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
-    "//#format": {},
-    "//#typecheck": { "dependsOn": ["^build"] },
-    "typecheck": { "dependsOn": ["^build"] },
-    "//#lint": { "dependsOn": ["^build"] },
-    "lint": { "dependsOn": ["^build"] },
+    "flush": {
+      "cache": false
+    },
+    "clean": {
+      "cache": false
+    },
     "build": {
-      "dependsOn": ["typecheck", "lint"],
-      "outputs": [".build/**"]
-    }
+      "inputs": ["src/**", "tsconfig.json", "tsconfig.build.json"],
+      "outputs": ["dist/**"],
+      "dependsOn": ["^build"]
+    },
+    "test": {
+      "inputs": ["src/**", "tests/**"]
+    },
+    "local": {
+      "dependsOn": ["^build"]
+    },
+    "lint": {}
   }
 }
