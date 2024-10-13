@@ -1,0 +1,24 @@
+{
+  "name": "@arweave-wallet-kit/styles",
+  "version": "0.0.1-beta.3",
+  "description": "Arweave Wallet Kit style resources",
+  "repository": "https://github.com/labscommunity/wallet-kit-styles",
+  "license": "MIT",
+  "author": "Marton Lederer <marton@lederer.hu>",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "jsnext:main": "dist/index.es.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "sass src:dist",
+    "dev": "sass src:./ --watch"
+  },
+  "devDependencies": {
+    "sass": "^1.66.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

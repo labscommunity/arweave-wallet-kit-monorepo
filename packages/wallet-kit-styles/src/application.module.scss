@@ -1,0 +1,57 @@
+.application {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.appInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.logo {
+  width: 60%;
+  height: 60%;
+  user-select: none;
+  object-fit: contain;
+}
+
+.appIcon {
+  position: relative;
+  width: 3.8rem;
+  height: 3.8rem;
+  border-radius: 15px;
+  background-color: rgb(var(--color-theme));
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+
+  &.borderMinimal {
+    border-radius: 6px;
+  }
+
+  &.borderNone {
+    border-radius: 0;
+  }
+
+  &.clickable {
+    cursor: pointer;
+    transition: transform 0.125s ease;
+
+    &:active {
+      transform: scale(.95);
+    }
+  }
+
+  .logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.appNameAndDescription {
+  flex-shrink: 1;
+}

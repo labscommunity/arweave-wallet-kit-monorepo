@@ -1,0 +1,57 @@
+.bottomModal {
+  display: flex;
+  align-items: center;
+  gap: 1.24rem;
+  padding: 0.75rem 1rem;
+  border-radius: 15px;
+  bottom: 0;
+  right: 1.5rem;
+  left: unset;
+  top: unset;
+  width: auto;
+
+  &.borderNone {
+    border-radius: 0;
+  }
+
+  &.borderMinimal {
+    border-radius: 8px;
+  }
+
+  @media screen and (max-width: 720px) {
+    left: 1.5rem;
+    gap: 1rem;
+  }
+}
+
+.text {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: rgb(var(--primary-text));
+  margin: 0;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  @media screen and (max-width: 720px) {
+    flex-direction: column;
+
+    button {
+      width: 100%;
+    }
+  }
+}
+
+.closeButton {
+  background-color: transparent;
+  color: rgb(var(--primary-text));
+
+  &:hover {
+    background-color: rgba(var(--theme), 0.05);
+    color: rgb(var(--theme));
+    box-shadow: none !important;
+  }
+}

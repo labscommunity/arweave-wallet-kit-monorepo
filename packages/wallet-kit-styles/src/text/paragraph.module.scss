@@ -1,0 +1,11 @@
+.paragraph {
+  font-size: .9rem;
+  color: rgb(var(--secondary-text));
+  margin: 0;
+  font-weight: 600;
+  transition: color 0.23s ease-in-out;
+
+  &.small {
+    font-size: .7rem;
+  }
+}

@@ -1,0 +1,27 @@
+.title {
+  display: flex;
+  font-family: "Manrope", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgb(var(--primary-text));
+  cursor: text;
+  align-items: center;
+  gap: 0.34rem;
+  margin: 0;
+  transition: color 0.23s ease-in-out;
+
+  &.small {
+    font-size: 1.05rem;
+  }
+
+  &.themed {
+    color: rgb(var(--title-highlight));
+    cursor: pointer;
+  }
+}
+
+.withParagraph {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}

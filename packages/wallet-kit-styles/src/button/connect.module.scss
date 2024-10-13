@@ -1,0 +1,49 @@
+.button {
+  border-radius: 18px;
+  text-transform: none;
+  padding: 0.3rem;
+  background-color: rgb(var(--theme));
+
+  &.borderMinimal {
+    border-radius: 10px;
+  }
+
+  &.borderNone {
+    border-radius: 0;
+  }
+}
+
+.connectText {
+  line-height: 2.6rem;
+  padding: 0 0.9rem;
+}
+
+.profileSection {
+  display: flex;
+  align-items: center;
+  height: 2.6rem;
+  border-radius: 15px;
+  padding: 0 0.3rem 0 0.6rem;
+  gap: 0.25rem;
+  background-color: transparent;
+
+  &.showBalance {
+    background-color: rgb(var(--background));
+  }
+
+  &.borderMinimal {
+    border-radius: 7px;
+  }
+
+  &.borderNone {
+    border-radius: 0;
+  }
+}
+
+.balance {
+  padding: 0 0.5rem;
+}
+
+.expandIcon {
+  font-size: 1.5rem !important;
+}

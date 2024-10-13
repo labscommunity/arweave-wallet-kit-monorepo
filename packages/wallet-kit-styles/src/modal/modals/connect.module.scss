@@ -1,0 +1,108 @@
+.apps {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  padding-bottom: 1.2rem;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.noStrategies {
+  font-size: .94rem;
+  text-align: center;
+  color: rgb(var(--secondary-text));
+  margin: 3.4rem 0;
+  font-weight: 600;
+  transition: color 0.23s ease-in-out;
+}
+
+.connecting {
+  position: relative;
+  height: 280px;
+}
+
+.walletData {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 45%;
+  left: 50%;
+  width: 70%;
+  transform: translate(-50%, -50%);
+
+  .appIcon {
+    margin-bottom: 0.65rem;
+  }
+
+  .title {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 0.1rem;
+    justify-content: center;
+  }
+
+  .paragraph {
+    text-align: center;
+  }
+
+  .button {
+    margin-top: 1rem;
+  }
+}
+
+.braveParagraph {
+  background-color: rgba(251, 85, 43, 0.2);
+  color: #fb542b;
+  padding: .44rem;
+  margin-top: .6rem;
+  border-radius: 14px;
+
+  &.borderNone {
+    border-radius: 0;
+  }
+
+  &.borderMinimal {
+    border-radius: 8px;
+  }
+}
+
+.connectLoading {
+  display: block;
+  margin: 0 auto;
+  margin-top: 1rem;
+  color: rgb(var(--primary-text));
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.backButton {
+  font-size: 1em;
+  width: 1em;
+  height: 1em;
+  cursor: pointer;
+  color: rgb(0, 122, 255);
+  transform: scale(1.75);
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.125s ease;
+
+  &:hover {
+    transform: scale(1.9);
+  }
+
+  &:active {
+    transform: scale(1.5);
+  }
+}
+
+.addStrategyCode {
+  margin: 1rem;
+  padding: .8rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgb(var(--light));
+  color: rgb(var(--secondary-text));
+  font-size: .95rem;
+  font-family: monospace;
+  font-weight: 500;
+}
