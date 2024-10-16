@@ -1,0 +1,46 @@
+import { readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
+
+export function setPackageVersions(rootDir: string, version: string) {
+  const packageDirs = readdirSync(rootDir);
+  for (const packageDir of packageDirs) {
+    const packagePath = join(rootDir, packageDir, "package.json");
+    const packageJson = JSON.parse(readFileSync(packagePath, "utf-8"));
+
+    packageJson.version = version;
+
+    if (packageJson.main === "./src/index.ts") {
+      packageJson.main = "./dist/index.js";
+    }
+
+    if (packageJson.types === "./src/index.ts") {
+      packageJson.types = "./dist/index.d.ts";
+    }
+
+    if (packageJson.dependencies !== undefined) {
+      for (const key in packageJson.dependencies) {
+        if (packageJson.dependencies[key].includes("workspace:*")) {
+          packageJson.dependencies[key] = version;
+        }
+      }
+    }
+
+    if (packageJson.devDependencies !== undefined) {
+      for (const key in packageJson.devDependencies) {
+        if (packageJson.devDependencies[key].includes("workspace:*")) {
+          packageJson.devDependencies[key] = version;
+        }
+      }
+    }
+
+    if (packageJson.peerDependencies !== undefined) {
+      for (const key in packageJson.peerDependencies) {
+        if (packageJson.peerDependencies[key].includes("workspace:*")) {
+          packageJson.peerDependencies[key] = version;
+        }
+      }
+    }
+
+    writeFileSync(packagePath, JSON.stringify(packageJson, null, 2));
+  }
+}
