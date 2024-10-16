@@ -1,0 +1,67 @@
+{
+  "name": "@arweave-wallet-kit/core",
+  "version": "0.0.1-beta.5",
+  "description": "Core module for the Arweave Wallet Kit",
+  "repository": "https://github.com/labscommunity/arweave-wallet-kit-core",
+  "author": "Marton Lederer <marton@lederer.hu>",
+  "license": "MIT",
+  "private": false,
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "fmt": "prettier . --write"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./wallet": {
+      "types": "./dist/wallet.d.ts",
+      "import": "./dist/wallet.es.js",
+      "require": "./dist/wallet.cjs.js"
+    },
+    "./strategy": {
+      "types": "./dist/strategy.d.ts",
+      "import": "./dist/strategy.es.js",
+      "require": "./dist/strategy.cjs.js"
+    },
+    "./theme": {
+      "types": "./dist/theme.d.ts",
+      "import": "./dist/theme.es.js",
+      "require": "./dist/theme.cjs.js"
+    },
+    "./config": {
+      "types": "./dist/config.d.ts",
+      "import": "./dist/config.es.js",
+      "require": "./dist/config.cjs.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "wallet": [
+        "./dist/wallet.d.ts"
+      ],
+      "strategy": [
+        "./dist/strategy.d.ts"
+      ],
+      "theme": [
+        "./dist/theme.d.ts"
+      ],
+      "config": [
+        "./dist/config.d.ts"
+      ]
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.1",
+    "arweave": "^1.12.2",
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.3",
+    "vite-plugin-dts": "^3.2.0"
+  }
+}

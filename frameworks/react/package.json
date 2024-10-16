@@ -1,0 +1,65 @@
+{
+  "name": "@arweave-wallet-kit/react",
+  "private": false,
+  "version": "0.0.1-beta.4",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "fmt": "prettier . --write"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js"
+    }
+  },
+  "dependencies": {
+    "@callstack/react-theme-provider": "^3.0.8",
+    "@iconicicons/react": "^1.5.1",
+    "@linaria/core": "^6.1.0",
+    "@linaria/react": "^6.1.0",
+    "@wyw-in-js/babel-preset": "^0.4.1",
+    "framer-motion": "8.1.9",
+    "react-helmet": "^6.1.0"
+  },
+  "devDependencies": {
+    "@arweave-wallet-kit/core": "workspace:*",
+    "@babel/preset-react": "^7.22.5",
+    "@babel/preset-typescript": "^7.22.5",
+    "@types/node": "^18.11.18",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.10",
+    "@types/react-helmet": "^6.1.6",
+    "@vitejs/plugin-react": "^3.0.0",
+    "@wyw-in-js/vite": "^0.4.1",
+    "arweave": "^1.12.2",
+    "babel-loader": "^8.3.0",
+    "prettier": "^2.8.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rollup-plugin-preserve-directives": "^0.2.0",
+    "typescript": "^4.9.3",
+    "vite": "^4.0.0",
+    "vite-plugin-banner": "^0.7.0",
+    "vite-plugin-css-injected-by-js": "^3.1.2",
+    "vite-plugin-dts": "^1.7.1"
+  },
+  "peerDependencies": {
+    "@arweave-wallet-kit/core": ">= 0.0.1-beta.2 < 2",
+    "@arweave-wallet-kit/styles": ">= 0.0.1-beta.1 < 2",
+    "arweave": ">= 1.12.2 < 2",
+    "react": "^16.8.0 || 17.x || 18.x",
+    "react-dom": "^16.8.0 || 17.x || 18.x"
+  }
+}
