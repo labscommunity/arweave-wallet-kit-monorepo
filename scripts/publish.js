@@ -1,13 +1,13 @@
-import { spawn } from "node:child_process";
-import { resolve, join } from "node:path";
-import { readdirSync } from "node:fs";
+const { spawn } = require("node:child_process");
+const { resolve, join } = require("node:path");
+const { readdirSync } = require("node:fs");
 
-const ROOT_DIR = resolve(import.meta.url, "..", "..");
+const ROOT_DIR = resolve(__dirname, "..");
 
 const packages = readdirSync(join(ROOT_DIR, "packages"));
 const configs = readdirSync(join(ROOT_DIR, "configs"));
 
-async function main(): Promise<void> {
+async function main() {
   for (const pkg of packages) {
     await publish(join(ROOT_DIR, "packages", pkg));
   }
@@ -16,7 +16,7 @@ async function main(): Promise<void> {
   }
 }
 
-async function publish(cwd: string): Promise<void> {
+async function publish(cwd) {
   const cursor = spawn("npm", ["publish", "--access", "public"], {
     stdio: "inherit",
     cwd,

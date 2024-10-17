@@ -2,10 +2,15 @@
   "name": "@arweave-wallet-kit/monorepo",
   "private": true,
   "scripts": {
+    "prepare": "husky install && chmod ug+x .husky/*",
     "build": "turbo run build",
-    "format": "prettier -w .",
-    "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "flush": "turbo run flush && rm -rf ./node_modules",
+    "clean": "turbo run clean",
+    "lint": "turbo run lint -- --fix",
+    "test": "turbo run test -- --forceExit",
+    "ncu": "turbo run ncu",
+    "publish": "node ./scripts/publish.js",
+    "local": "node ./scripts/local.js"
   },
   "devDependencies": {
     "@types/node": "^22.7.5",

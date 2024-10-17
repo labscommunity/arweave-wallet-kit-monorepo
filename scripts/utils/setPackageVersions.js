@@ -1,7 +1,7 @@
-import { readdirSync, readFileSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+const { readdirSync, readFileSync, writeFileSync } = require("node:fs");
+const { join } = require("node:path");
 
-export function setPackageVersions(rootDir: string, version: string) {
+function setPackageVersions(rootDir, version) {
   const packageDirs = readdirSync(rootDir);
   for (const packageDir of packageDirs) {
     const packagePath = join(rootDir, packageDir, "package.json");
@@ -44,3 +44,7 @@ export function setPackageVersions(rootDir: string, version: string) {
     writeFileSync(packagePath, JSON.stringify(packageJson, null, 2));
   }
 }
+
+module.exports = {
+  setPackageVersions,
+};

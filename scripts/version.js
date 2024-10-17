@@ -1,7 +1,8 @@
-import { resolve } from "node:path";
-import { setPackageVersions } from "./utils/setPackageVersions";
+const { resolve } = require("node:path");
 
-const ROOT_DIR = resolve(import.meta.url, "..", "..");
+const { setPackageVersions } = require("./utils/setPackageVersions.js");
+
+const ROOT_DIR = resolve(__dirname, "..");
 const PKGS_DIR = resolve(ROOT_DIR, "packages");
 const CONF_DIR = resolve(ROOT_DIR, "configs");
 

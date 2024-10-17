@@ -1,10 +1,10 @@
-import { spawnSync } from "node:child_process";
-import { cpSync, mkdirSync, readdirSync, rmSync } from "node:fs";
-import { join, resolve } from "node:path";
+const { spawnSync } = require("node:child_process");
+const { cpSync, mkdirSync, readdirSync, rmSync } = require("node:fs");
+const { join, resolve } = require("node:path");
 
-import { setPackageVersions } from "./utils/setPackageVersions.js";
+const { setPackageVersions } = require("./utils/setPackageVersions");
 
-const ROOT_DIR = resolve(import.meta.url, "..", "..");
+const ROOT_DIR = resolve(__dirname, "..");
 const PUBLISH_DIR = resolve(ROOT_DIR, ".publish");
 const CONFIGS_DIR = resolve(ROOT_DIR, "configs");
 const PACKAGES_DIR = resolve(ROOT_DIR, "packages");
@@ -42,7 +42,7 @@ spawnSync("pnpm", ["clean"], { stdio: "inherit", cwd: ROOT_DIR });
  |--------------------------------------------------------------------------------
  */
 
-function getVersion(): string {
+function getVersion() {
   const pos = process.argv.indexOf("--version");
   if (pos === -1) {
     throw new Error("No version specified.");

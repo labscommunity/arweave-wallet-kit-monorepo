@@ -1,5 +1,5 @@
-import * as fs from "node:fs";
-import * as path from "node:path";
+const fs = require("node:fs");
+const path = require("node:path");
 
 const packageName = process.argv[2];
 
@@ -8,7 +8,7 @@ const JUST_ADD_AN_EXTENSION = '$1.js"';
 const ADD_INDEX_FILE = '$1/index.js"';
 const JS_EXT = ".js";
 
-function fixImportsAtFolder(rootPath: string): void {
+function fixImportsAtFolder(rootPath) {
   const entries = fs.readdirSync(rootPath);
   entries.forEach((entry) => {
     const entryPath = path.join(rootPath, entry);
@@ -26,7 +26,7 @@ function fixImportsAtFolder(rootPath: string): void {
   });
 }
 
-function fixImportsAtFile(filePath: string): void {
+function fixImportsAtFile(filePath) {
   const content = fs.readFileSync(filePath).toString("utf8");
   const lines = content.split("\n");
 
@@ -55,13 +55,5 @@ function fixImportsAtFile(filePath: string): void {
 }
 
 fixImportsAtFolder(
-  path.join(
-    import.meta.url,
-    "..",
-    "..",
-    "packages",
-    packageName,
-    "dist",
-    "esm",
-  ),
+  path.join(__dirname, "..", "packages", packageName, "dist", "esm"),
 );
