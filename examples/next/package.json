@@ -1,0 +1,27 @@
+{
+  "name": "next",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@arweave-wallet-kit/arconnect-strategy": "workspace:*",
+    "@arweave-wallet-kit/browser-wallet-strategy": "workspace:*",
+    "@arweave-wallet-kit/core": "workspace:*",
+    "@arweave-wallet-kit/react": "workspace:*",
+    "next": "14.2.15",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "babel-loader": "^8.3.0",
+    "typescript": "^5"
+  }
+}
