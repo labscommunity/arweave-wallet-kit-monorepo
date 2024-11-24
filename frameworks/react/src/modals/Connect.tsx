@@ -20,7 +20,7 @@ import useGlobalState from "../hooks/global";
 import useGatewayURL from "../hooks/gateway";
 import { styled } from "@linaria/react";
 import useModal from "../hooks/modal";
-
+import { rgbToString } from "@arweave-wallet-kit/core/theme";
 export function ConnectModal() {
   // modal controlls and statuses
   const modalController = useModal();
@@ -272,8 +272,15 @@ export function ConnectModal() {
   );
 }
 
-const StyledTitle = styled(Title)``;
-const StyledParagraph = styled(Paragraph)``;
+const StyledTitle = withTheme(styled(Title)<{ theme: DefaultTheme }>`
+  color: rgb(${(props) =>
+    props.themed
+      ? rgbToString(props.theme.themeConfig.titleHighlight)
+      : props.theme.primaryText}) !important;
+`);
+const StyledParagraph = withTheme(styled(Paragraph)<{ theme: DefaultTheme }>`
+  color: rgb(${(props) => props.theme.secondaryText});
+`);
 
 const Apps = styled.div`
   position: relative;

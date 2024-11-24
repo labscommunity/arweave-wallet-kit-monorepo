@@ -20,8 +20,8 @@ export function Application({
           <Logo src={logo} draggable={false} />
         </AppIcon>
         <AppNameAndDescription>
-          <Title small>{name}</Title>
-          <Paragraph small>{description}</Paragraph>
+          <StyledTitle small>{name}</StyledTitle>
+          <StyledParagraph small>{description}</StyledParagraph>
         </AppNameAndDescription>
       </AppInfo>
       <Button onClick={onClick}>Go</Button>
@@ -54,6 +54,14 @@ const radius: Record<Radius, number> = {
   minimal: 6,
   none: 0
 };
+
+const StyledTitle = withTheme(styled(Title)<{ theme: DefaultTheme }>`
+  color: rgb(${(props) => props.theme.primaryText});
+`);
+
+const StyledParagraph = withTheme(styled(Paragraph)<{ theme: DefaultTheme }>`
+  color: rgb(${(props) => props.theme.secondaryText});
+`);
 
 export const AppIcon = withTheme(styled.div<{
   colorTheme?: string;
