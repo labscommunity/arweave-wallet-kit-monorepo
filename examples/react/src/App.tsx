@@ -1,7 +1,6 @@
-"use client";
-
 import { useConnection, useActiveAddress } from "@arweave-wallet-kit/react";
 
+import "./App.css";
 import { useEffect, useState } from "react";
 import Arweave from "arweave";
 
@@ -45,16 +44,16 @@ function App() {
                   <p className="text-sm text-gray-600 mb-1 font-semibold">
                     Address
                   </p>
-                  <p className="font-mono text-sm break-all bg-gray-50 p-2 text-black rounded-lg">
+                  <p className="font-mono text-sm break-all bg-gray-50 p-2 rounded-lg">
                     {activeAddress}
                   </p>
                 </div>
 
                 <div>
-                  <p className="text-sm text-gray-600 mb-1 font-semibold text-black">
+                  <p className="text-sm text-gray-600 mb-1 font-semibold">
                     Balance
                   </p>
-                  <p className="font-semibold text-lg text-black">
+                  <p className="font-semibold text-lg">
                     {balance ? (balance / 10 ** 12).toFixed(2) : "0.00"} AR
                   </p>
                 </div>

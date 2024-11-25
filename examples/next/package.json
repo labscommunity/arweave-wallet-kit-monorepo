@@ -3,16 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "next dev",
+    "lint": "next lint",
+    "start": "next start"
   },
   "dependencies": {
     "@arweave-wallet-kit/arconnect-strategy": "workspace:*",
     "@arweave-wallet-kit/browser-wallet-strategy": "workspace:*",
     "@arweave-wallet-kit/core": "workspace:*",
     "@arweave-wallet-kit/react": "workspace:*",
+    "arweave": "^1.15.5",
     "next": "14.2.15",
     "react": "^18",
     "react-dom": "^18"
