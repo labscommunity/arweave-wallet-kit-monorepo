@@ -4,12 +4,16 @@ import React from "react";
 import { ArweaveWalletKit } from "@arweave-wallet-kit/react";
 import BrowserWalletStrategy from "@arweave-wallet-kit/browser-wallet-strategy";
 import ArConnectStrategy from "@arweave-wallet-kit/arconnect-strategy";
-
+import OthentStrategy from "@arweave-wallet-kit/othent-strategy";
 export default function Provider({ children }: { children: React.ReactNode }) {
   return (
     <ArweaveWalletKit
       config={{
-        strategies: [new ArConnectStrategy(), new BrowserWalletStrategy()],
+        strategies: [
+          new ArConnectStrategy(),
+          new BrowserWalletStrategy(),
+          new OthentStrategy(),
+        ],
         permissions: ["ACCESS_ADDRESS", "SIGN_TRANSACTION"],
         ensurePermissions: true,
         appInfo: {

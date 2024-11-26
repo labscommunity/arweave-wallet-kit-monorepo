@@ -74,6 +74,9 @@ importers:
       '@arweave-wallet-kit/core':
         specifier: workspace:*
         version: link:../../packages/wallet-kit-core
+      '@arweave-wallet-kit/othent-strategy':
+        specifier: workspace:*
+        version: link:../../strategies/othent
       '@arweave-wallet-kit/react':
         specifier: workspace:*
         version: link:../../frameworks/react

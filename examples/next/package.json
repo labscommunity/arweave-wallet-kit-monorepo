@@ -11,6 +11,7 @@
   "dependencies": {
     "@arweave-wallet-kit/arconnect-strategy": "workspace:*",
     "@arweave-wallet-kit/browser-wallet-strategy": "workspace:*",
+    "@arweave-wallet-kit/othent-strategy": "workspace:*",
     "@arweave-wallet-kit/core": "workspace:*",
     "@arweave-wallet-kit/react": "workspace:*",
     "arweave": "^1.15.5",
