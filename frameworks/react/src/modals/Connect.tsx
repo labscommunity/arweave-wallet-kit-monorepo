@@ -79,7 +79,7 @@ export function ConnectModal() {
     setLoadingAvailability(true);
     setSelectedStrategy(strategyID);
 
-    let available = false;
+    let available: boolean | string = false;
 
     try {
       available = await s.isAvailable();
@@ -87,7 +87,7 @@ export function ConnectModal() {
       available = false;
     }
 
-    setStrategyAvailable(available);
+    setStrategyAvailable(available as boolean);
     setLoadingAvailability(false);
 
     if (!available) {
