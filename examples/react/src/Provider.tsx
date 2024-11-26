@@ -12,7 +12,7 @@ export default function Provider({ children }: { children: React.ReactNode }) {
           new BrowserWalletStrategy(),
           new OthentStrategy(),
         ],
-        permissions: ["ACCESS_ADDRESS", "SIGN_TRANSACTION"],
+        permissions: ["ACCESS_ADDRESS", "SIGN_TRANSACTION","ACCESS_PUBLIC_KEY","ENCRYPT"],
         ensurePermissions: true,
         appInfo: {
           name: "LiquidOps",
