@@ -6,8 +6,9 @@ const { setPackageVersions } = require("./utils/setPackageVersions");
 
 const ROOT_DIR = resolve(__dirname, "..");
 const PUBLISH_DIR = resolve(ROOT_DIR, ".publish");
-const CONFIGS_DIR = resolve(ROOT_DIR, "configs");
 const PACKAGES_DIR = resolve(ROOT_DIR, "packages");
+const STRATEGIES_DIR = resolve(ROOT_DIR, "strategies");
+const FRAMEWORKS_DIR = resolve(ROOT_DIR, "frameworks");
 const VERSION = getVersion();
 
 // ### Build Packages
@@ -18,18 +19,21 @@ spawnSync("pnpm", ["build"], { stdio: "inherit", cwd: ROOT_DIR });
 
 mkdirSync(PUBLISH_DIR);
 
-cpSync(CONFIGS_DIR, join(PUBLISH_DIR, "configs"), { recursive: true });
+cpSync(STRATEGIES_DIR, join(PUBLISH_DIR, "strategies"), { recursive: true });
+cpSync(FRAMEWORKS_DIR, join(PUBLISH_DIR, "frameworks"), { recursive: true });
 cpSync(PACKAGES_DIR, join(PUBLISH_DIR, "packages"), { recursive: true });
 
 // ### Prepare Packages
 
-setPackageVersions(join(PUBLISH_DIR, "configs"), VERSION);
+setPackageVersions(join(PUBLISH_DIR, "strategies"), VERSION);
+setPackageVersions(join(PUBLISH_DIR, "frameworks"), VERSION);
 setPackageVersions(join(PUBLISH_DIR, "packages"), VERSION);
 
 // ### Publish Packages
 
 const packages = readdirSync(join(PUBLISH_DIR, "packages"));
-const configs = readdirSync(join(PUBLISH_DIR, "configs"));
+const strategies = readdirSync(join(PUBLISH_DIR, "strategies"));
+const frameworks = readdirSync(join(PUBLISH_DIR, "frameworks"));
 
 // ### Clean Up
 

@@ -3,4 +3,3 @@ packages:
   - strategies/*
   - frameworks/*
   - packages/*
-  - configs/*
