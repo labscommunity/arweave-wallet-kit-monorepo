@@ -10,7 +10,8 @@ export type PermissionType =
   | "DECRYPT"
   | "SIGNATURE"
   | "ACCESS_ARWEAVE_CONFIG"
-  | "DISPATCH";
+  | "DISPATCH"
+  | "ACCESS_TOKENS";
 
 /**
  * Compare two permission arrays

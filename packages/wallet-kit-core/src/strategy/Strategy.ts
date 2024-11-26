@@ -1,11 +1,12 @@
-import type { SignatureOptions } from "arweave/web/lib/crypto/crypto-interface";
 import type Transaction from "arweave/web/lib/transaction";
+
 import type {
   PermissionType,
   AppInfo,
   GatewayConfig,
-  DispatchResult
-} from "../wallet";
+  DispatchResult,
+  DataItem,
+} from "arconnect";
 
 export default abstract class Strategy {
   // info
@@ -24,7 +25,7 @@ export default abstract class Strategy {
   public abstract connect(
     permissions: PermissionType[],
     appInfo?: AppInfo,
-    gateway?: GatewayConfig
+    gateway?: GatewayConfig,
   ): Promise<void>;
   public abstract disconnect(): Promise<void>;
 
@@ -33,35 +34,36 @@ export default abstract class Strategy {
   public abstract getAllAddresses(): Promise<string[]>;
   public abstract sign(
     transaction: Transaction,
-    options?: SignatureOptions
-  ): Promise<void>;
+    options?: any,
+  ): Promise<Transaction>;
   public abstract getPermissions(): Promise<PermissionType[]>;
-  public abstract getWalletNames(): Promise<{ [addr: string]: string }>;
-  public abstract encrypt(
+  public abstract getWalletNames?(): Promise<{ [addr: string]: string }>;
+  public abstract encrypt?(
     data: BufferSource,
-    algorithm?: RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams
+    algorithm: RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams,
   ): Promise<Uint8Array>;
-  public abstract decrypt(
+  public abstract decrypt?(
     data: BufferSource,
-    algorithm?: RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams
+    algorithm: RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams,
   ): Promise<Uint8Array>;
-  public abstract getArweaveConfig(): Promise<GatewayConfig>;
-  public abstract signature(
+  public abstract getArweaveConfig?(): Promise<GatewayConfig>;
+  public abstract signature?(
     data: Uint8Array,
-    algorithm: AlgorithmIdentifier | RsaPssParams | EcdsaParams
+    algorithm: AlgorithmIdentifier | RsaPssParams | EcdsaParams,
   ): Promise<Uint8Array>;
-  public abstract getActivePublicKey(): Promise<string>;
+  public abstract getActivePublicKey?(): Promise<string>;
   public abstract addToken?(id: string): Promise<void>;
   public abstract dispatch(transaction: Transaction): Promise<DispatchResult>;
 
   /** Is this strategy available in the current context */
-  public abstract isAvailable(): Promise<boolean> | boolean;
+  public abstract isAvailable(): Promise<boolean | string> | boolean | string;
 
   /** Events */
   public abstract addAddressEvent(
-    listener: (address: string) => void
+    listener: (address: string) => void,
   ): (e: CustomEvent<{ address: string }>) => void;
   public abstract removeAddressEvent(
-    listener: (e: CustomEvent<{ address: string }>) => void
+    listener: (e: CustomEvent<{ address: string }>) => void,
   ): void;
+  public abstract signDataItem(p: DataItem): Promise<ArrayBuffer>;
 }

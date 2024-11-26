@@ -1,8 +1,8 @@
 {
-  "name": "@arweave-wallet-kit/browser-wallet-strategy",
-  "version": "0.0.1-beta.4",
-  "description": "Browser wallet strategy for the Arweave Wallet Kit",
-  "repository": "https://github.com/labscommunity/wallet-kit-browser-wallet",
+  "name": "@arweave-wallet-kit/othent-strategy",
+  "version": "0.0.1-beta.7",
+  "description": "Othent strategy for the Arweave Wallet Kit",
+  "repository": "https://github.com/labscommunity/wallet-kit-othent",
   "author": "Marton Lederer <marton@lederer.hu>",
   "license": "MIT",
   "private": false,
@@ -29,7 +29,7 @@
     }
   },
   "devDependencies": {
-    "@arweave-wallet-kit/core": "workspace:*",
+    "@arweave-wallet-kit/core": "^0.0.1-beta.5",
     "@types/node": "^20.4.2",
     "arconnect": "^1.0.4",
     "arweave": "^1.12.2",
@@ -40,5 +40,9 @@
   },
   "peerDependencies": {
     "@arweave-wallet-kit/core": ">= 0.0.1-beta.1 < 2"
+  },
+  "dependencies": {
+    "@othent/kms": "2.1.1",
+    "jwt-decode": "^4.0.0"
   }
 }

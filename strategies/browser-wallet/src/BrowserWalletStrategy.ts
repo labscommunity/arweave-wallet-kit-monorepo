@@ -1,8 +1,14 @@
-import { AppInfo, callWindowApi, DispatchResult, GatewayConfig, PermissionType } from "@arweave-wallet-kit/core/wallet";
+import {
+  AppInfo,
+  callWindowApi,
+  DispatchResult,
+  GatewayConfig,
+  PermissionType,
+} from "@arweave-wallet-kit/core/wallet";
 import type { SignatureOptions } from "arweave/web/lib/crypto/crypto-interface";
 import type { Strategy } from "@arweave-wallet-kit/core/strategy";
 import type Transaction from "arweave/web/lib/transaction";
-
+import type { DataItem } from "arconnect";
 /**
  * Any kind of browser wallet, with an
  * ArConnect-like injected API
@@ -19,7 +25,7 @@ export default class BrowserWalletStrategy implements Strategy {
   public async isAvailable() {
     if (typeof window === "undefined" || !window) {
       console.error(
-        `[Arweave Wallet Kit] "${this.id}" strategy is unavailable. Window is undefined`
+        `[Arweave Wallet Kit] "${this.id}" strategy is unavailable. Window is undefined`,
       );
       return false;
     }
@@ -39,7 +45,7 @@ export default class BrowserWalletStrategy implements Strategy {
 
         if (!window.arweaveWallet) {
           console.error(
-            `[Arweave Wallet Kit] "${this.id}" strategy is unavailable. window.arweaveWallet is undefined`
+            `[Arweave Wallet Kit] "${this.id}" strategy is unavailable. window.arweaveWallet is undefined`,
           );
         }
 
@@ -53,7 +59,7 @@ export default class BrowserWalletStrategy implements Strategy {
   public async connect(
     permissions: PermissionType[],
     appInfo?: AppInfo,
-    gateway?: GatewayConfig
+    gateway?: GatewayConfig,
   ): Promise<void> {
     return await callWindowApi("connect", [permissions, appInfo, gateway]);
   }
@@ -80,11 +86,11 @@ export default class BrowserWalletStrategy implements Strategy {
 
   public async sign(
     transaction: Transaction,
-    options?: SignatureOptions
-  ): Promise<void> {
+    options?: SignatureOptions,
+  ): Promise<Transaction> {
     const signedTransaction = await callWindowApi("sign", [
       transaction,
-      options
+      options,
     ]);
 
     transaction.setSignature({
@@ -92,20 +98,26 @@ export default class BrowserWalletStrategy implements Strategy {
       owner: signedTransaction.owner,
       reward: signedTransaction.reward,
       tags: signedTransaction.tags,
-      signature: signedTransaction.signature
+      signature: signedTransaction.signature,
     });
+
+    return transaction;
+  }
+
+  public async signDataItem(p: DataItem): Promise<ArrayBuffer> {
+    return await callWindowApi("signDataItem", [p]);
   }
 
   public async encrypt(
     data: BufferSource,
-    algorithm: RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams
+    algorithm: RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams,
   ): Promise<Uint8Array> {
     return await callWindowApi("encrypt", [data, algorithm]);
   }
 
   public async decrypt(
     data: BufferSource,
-    algorithm: RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams
+    algorithm: RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams,
   ): Promise<Uint8Array> {
     return await callWindowApi("decrypt", [data, algorithm]);
   }
@@ -116,7 +128,7 @@ export default class BrowserWalletStrategy implements Strategy {
 
   public async signature(
     data: Uint8Array,
-    algorithm: AlgorithmIdentifier | RsaPssParams | EcdsaParams
+    algorithm: AlgorithmIdentifier | RsaPssParams | EcdsaParams,
   ): Promise<Uint8Array> {
     return await callWindowApi("signature", [data, algorithm]);
   }
@@ -129,6 +141,10 @@ export default class BrowserWalletStrategy implements Strategy {
     return await callWindowApi("dispatch", [transaction]);
   }
 
+  public async addToken(id: string): Promise<void> {
+    throw new Error("Not implemented: " + id);
+  }
+
   public addAddressEvent(listener: (address: string) => void) {
     const listenerFunction = (e: CustomEvent<{ address: string }>) =>
       listener(e.detail.address);
@@ -138,7 +154,7 @@ export default class BrowserWalletStrategy implements Strategy {
   }
 
   public removeAddressEvent(
-    listener: (e: CustomEvent<{ address: string }>) => void
+    listener: (e: CustomEvent<{ address: string }>) => void,
   ) {
     removeEventListener("walletSwitch", listener);
   }

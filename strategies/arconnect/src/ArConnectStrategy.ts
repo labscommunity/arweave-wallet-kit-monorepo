@@ -1,7 +1,7 @@
 import BrowserWalletStrategy from "@arweave-wallet-kit/browser-wallet-strategy";
 import { callWindowApi } from "@arweave-wallet-kit/core/wallet";
 import { Strategy } from "@arweave-wallet-kit/core/strategy";
-
+import type { DataItem } from "arconnect";
 export default class ArConnectStrategy
   extends BrowserWalletStrategy
   implements Strategy
@@ -29,5 +29,11 @@ export default class ArConnectStrategy
 
   public async addToken(id: string): Promise<void> {
     return await callWindowApi("addToken", [id]);
+  }
+
+  public async batchSignDataItem(
+    dataItems: DataItem[],
+  ): Promise<ArrayBufferLike[]> {
+    return await callWindowApi("batchSignDataItem", [dataItems]);
   }
 }
