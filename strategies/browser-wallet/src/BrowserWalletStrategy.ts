@@ -3,12 +3,11 @@ import {
   callWindowApi,
   DispatchResult,
   GatewayConfig,
-  PermissionType,
 } from "@arweave-wallet-kit/core/wallet";
 import type { SignatureOptions } from "arweave/web/lib/crypto/crypto-interface";
 import type { Strategy } from "@arweave-wallet-kit/core/strategy";
 import type Transaction from "arweave/web/lib/transaction";
-import type { DataItem } from "arconnect";
+import type { DataItem, PermissionType } from "arconnect";
 /**
  * Any kind of browser wallet, with an
  * ArConnect-like injected API
