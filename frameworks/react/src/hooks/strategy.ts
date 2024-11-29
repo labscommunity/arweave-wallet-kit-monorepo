@@ -1,6 +1,7 @@
 import { getStrategy } from "@arweave-wallet-kit/core/strategy";
 import useGlobalState from "./global";
 import { useMemo } from "react";
+import { deepCopyIncludingPrototype } from "../utils";
 
 /**
  * Active strategy (wallet) identifier
@@ -18,10 +19,10 @@ export default function useActiveStrategy() {
   // global context
   const { state } = useGlobalState();
 
-  const strategy = useMemo(() => getStrategy(
-    state.activeStrategy,
-    state.config.strategies
-  ), [state]);
+  const strategy = useMemo(
+    () => getStrategy(state.activeStrategy, state.config.strategies),
+    [state]
+  );
 
   return strategy;
 }
@@ -40,7 +41,7 @@ export function useApi() {
     // e.g.: we don't return connect(),
     // as it needs it's implementation
     // from "useConnection"
-    const apiObj = strategy;
+    const apiObj = deepCopyIncludingPrototype(strategy);
     const omit = [
       "name",
       "description",
@@ -51,13 +52,12 @@ export function useApi() {
       "isAvailable",
       "addAddressEvent",
       "removeAddressEvent",
-      "connect"
+      "connect",
     ];
 
     for (const key in strategy) {
       if (!omit.includes(key)) continue;
 
-      // @ts-expect-error
       delete apiObj[key];
     }
 
