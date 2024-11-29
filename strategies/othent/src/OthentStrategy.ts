@@ -19,18 +19,18 @@ export default class OthentStrategy implements Strategy {
   public logo = "33nBIUNlGK4MnWtJZQy9EzkVJaAd7WoydIKfkJoMvDs";
   public url = "https://othent.io";
 
-  #othent: Othent | null = null;
-  #othentOptions: OthentOptions | null = null;
-  #addressListeners: ListenerFunction[] = [];
+  private othent: Othent | null = null;
+  private othentOptions: OthentOptions | null = null;
+  private addressListeners: ListenerFunction[] = [];
 
   constructor() {}
 
   public __overrideOthentOptions(othentOptions: OthentOptions) {
-    this.#othentOptions = othentOptions;
+    this.othentOptions = othentOptions;
   }
 
-  #othentInstance() {
-    if (this.#othent) return this.#othent;
+  private othentInstance() {
+    if (this.othent) return this.othent;
 
     try {
       const appInfo: OthentAppInfo = {
@@ -39,24 +39,24 @@ export default class OthentStrategy implements Strategy {
         env: ""
       };
 
-      this.#othent = new Othent({
+      this.othent = new Othent({
         appInfo,
         persistLocalStorage: true,
-        ...this.#othentOptions
+        ...this.othentOptions
       });
 
       // Note the cleanup function is not used here, which could cause issues with Othent is re-instantiated on the same tab.
-      this.#othent.addEventListener("auth", (userDetails) => {
-        for (const listener of this.#addressListeners) {
+      this.othent.addEventListener("auth", (userDetails) => {
+        for (const listener of this.addressListeners) {
           listener(
             (userDetails?.walletAddress || undefined) as unknown as string
           );
         }
       });
 
-      if (this.#othentOptions?.persistLocalStorage) {
+      if (this.othentOptions?.persistLocalStorage) {
         // Note the cleanup function is not used here, which could cause issues with Othent is re-instantiated on the same tab.
-        this.#othent.startTabSynching();
+        this.othent.startTabSynching();
       }
     } catch (err) {
       throw new Error(
@@ -64,7 +64,7 @@ export default class OthentStrategy implements Strategy {
       );
     }
 
-    return this.#othent;
+    return this.othent;
   }
 
   /**
@@ -74,7 +74,7 @@ export default class OthentStrategy implements Strategy {
 
   public async isAvailable() {
     try {
-      return !!this.#othentInstance();
+      return !!this.othentInstance();
     } catch {
       return false;
     }
@@ -85,7 +85,7 @@ export default class OthentStrategy implements Strategy {
     appInfo?: AppInfo,
     gateway?: GatewayConfig
   ) {
-    const othent = this.#othentInstance();
+    const othent = this.othentInstance();
 
     if (permissions) {
       console.warn(
@@ -105,7 +105,7 @@ export default class OthentStrategy implements Strategy {
   }
 
   public async disconnect() {
-    return this.#othentInstance().disconnect();
+    return this.othentInstance().disconnect();
   }
 
   public decrypt(
@@ -118,15 +118,15 @@ export default class OthentStrategy implements Strategy {
       );
     }
 
-    return this.#othentInstance().decrypt(data);
+    return this.othentInstance().decrypt(data);
   }
 
   public async dispatch(transaction: Transaction): Promise<DispatchResult> {
-    return this.#othentInstance().dispatch(transaction);
+    return this.othentInstance().dispatch(transaction);
   }
 
   public signDataItem(p: DataItem): Promise<ArrayBuffer> {
-    return this.#othentInstance().signDataItem(p);
+    return this.othentInstance().signDataItem(p);
   }
 
   public encrypt(
@@ -139,11 +139,11 @@ export default class OthentStrategy implements Strategy {
       );
     }
 
-    return this.#othentInstance().encrypt(data);
+    return this.othentInstance().encrypt(data);
   }
 
   public async getPermissions() {
-    const othent = this.#othentInstance();
+    const othent = this.othentInstance();
 
     return othent.getSyncUserDetails()
       ? othent.getPermissions()
@@ -151,11 +151,11 @@ export default class OthentStrategy implements Strategy {
   }
 
   public async getActiveAddress() {
-    return this.#othentInstance().getActiveAddress();
+    return this.othentInstance().getActiveAddress();
   }
 
   public async getAllAddresses() {
-    return this.#othentInstance().getAllAddresses();
+    return this.othentInstance().getAllAddresses();
   }
 
   public async addToken(id: string): Promise<void> {
@@ -163,15 +163,15 @@ export default class OthentStrategy implements Strategy {
   }
 
   public getArweaveConfig(): Promise<GatewayConfig> {
-    return this.#othentInstance().getArweaveConfig();
+    return this.othentInstance().getArweaveConfig();
   }
 
   public async getActivePublicKey() {
-    return this.#othentInstance().getActivePublicKey();
+    return this.othentInstance().getActivePublicKey();
   }
 
   public async getWalletNames() {
-    return this.#othentInstance().getWalletNames();
+    return this.othentInstance().getWalletNames();
   }
 
   public async sign(transaction: Transaction, options?: SignatureOptions) {
@@ -181,15 +181,15 @@ export default class OthentStrategy implements Strategy {
       );
     }
 
-    return this.#othentInstance().sign(transaction);
+    return this.othentInstance().sign(transaction);
   }
 
   public async userDetails() {
-    return this.#othentInstance().getUserDetails();
+    return this.othentInstance().getUserDetails();
   }
 
   public addAddressEvent(listener: ListenerFunction) {
-    this.#addressListeners.push(listener);
+    this.addressListeners.push(listener);
 
     // placeholder function
     return listener as any;
@@ -198,8 +198,8 @@ export default class OthentStrategy implements Strategy {
   public removeAddressEvent(
     listener: (e: CustomEvent<{ address: string }>) => void
   ) {
-    this.#addressListeners.splice(
-      this.#addressListeners.indexOf(listener as any),
+    this.addressListeners.splice(
+      this.addressListeners.indexOf(listener as any),
       1
     );
   }
@@ -214,7 +214,7 @@ export default class OthentStrategy implements Strategy {
       );
     }
 
-    return this.#othentInstance().signature(data);
+    return this.othentInstance().signature(data);
   }
 }
 
