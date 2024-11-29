@@ -68,6 +68,11 @@ export function useSyncPermissions() {
           payload: permissions,
         });
 
+        if (permissions.length === 0) {
+          fixupDisconnection();
+          return;
+        }
+
         if (requiredPermissions.length === 0 && ensurePermissions) {
           fixupDisconnection();
           return;
@@ -80,10 +85,6 @@ export function useSyncPermissions() {
             state.config.appInfo,
             state.config.gatewayConfig
           );
-        }
-
-        if (permissions.length === 0) {
-          fixupDisconnection();
         }
       } catch {
         fixupDisconnection();
