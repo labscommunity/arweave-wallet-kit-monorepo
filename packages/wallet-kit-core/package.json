@@ -1,6 +1,6 @@
 {
   "name": "@arweave-wallet-kit/core",
-  "version": "0.0.1-beta.5",
+  "version": "0.1.0",
   "description": "Core module for the Arweave Wallet Kit",
   "repository": "https://github.com/labscommunity/arweave-wallet-kit-core",
   "author": "Marton Lederer <marton@lederer.hu>",

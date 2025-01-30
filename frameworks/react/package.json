@@ -1,7 +1,7 @@
 {
   "name": "@arweave-wallet-kit/react",
   "private": false,
-  "version": "0.0.1-beta.4",
+  "version": "0.1.0",
   "type": "module",
   "publishConfig": {
     "access": "public"
@@ -34,7 +34,7 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
-    "@arweave-wallet-kit/core": "workspace:*",
+    "@arweave-wallet-kit/core": "^0.1.0",
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
@@ -58,8 +58,8 @@
     "vite-plugin-dts": "^1.7.1"
   },
   "peerDependencies": {
-    "@arweave-wallet-kit/core": ">= 0.0.1-beta.2 < 2",
-    "@arweave-wallet-kit/styles": ">= 0.0.1-beta.1 < 2",
+    "@arweave-wallet-kit/core": ">= 0.1.0 < 2",
+    "@arweave-wallet-kit/styles": ">= 0.1.0 < 2",
     "arweave": ">= 1.12.2 < 2",
     "react": "^16.8.0 || 17.x || 18.x",
     "react-dom": "^16.8.0 || 17.x || 18.x"

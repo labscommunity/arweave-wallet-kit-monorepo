@@ -1,6 +1,6 @@
 {
   "name": "@arweave-wallet-kit/othent-strategy",
-  "version": "0.0.1-beta.7",
+  "version": "0.1.0",
   "description": "Othent strategy for the Arweave Wallet Kit",
   "repository": "https://github.com/labscommunity/wallet-kit-othent",
   "author": "Marton Lederer <marton@lederer.hu>",
@@ -29,7 +29,7 @@
     }
   },
   "devDependencies": {
-    "@arweave-wallet-kit/core": "^0.0.1-beta.5",
+    "@arweave-wallet-kit/core": "^0.1.0",
     "@babel/preset-env": "^7.26.0",
     "@rollup/plugin-babel": "^6.0.4",
     "@types/node": "^20.4.2",
@@ -41,7 +41,7 @@
     "vite-plugin-dts": "^3.2.0"
   },
   "peerDependencies": {
-    "@arweave-wallet-kit/core": ">= 0.0.1-beta.1 < 2"
+    "@arweave-wallet-kit/core": ">= 0.1.0 < 2"
   },
   "dependencies": {
     "@othent/kms": "2.1.1",
