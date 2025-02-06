@@ -1,28 +1,25 @@
 {
   "name": "@arweave-wallet-kit/react",
+  "version": "0.1.1",
   "private": false,
-  "version": "0.1.0",
   "type": "module",
-  "publishConfig": {
-    "access": "public"
-  },
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "fmt": "prettier . --write"
-  },
-  "files": [
-    "dist"
-  ],
-  "main": "./dist/index.umd.js",
-  "module": "./dist/index.es.js",
-  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.es.js",
       "require": "./dist/index.umd.js"
     }
+  },
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc && vite build",
+    "dev": "vite",
+    "fmt": "prettier . --write"
   },
   "dependencies": {
     "@callstack/react-theme-provider": "^3.0.8",
@@ -34,7 +31,7 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
-    "@arweave-wallet-kit/core": "^0.1.0",
+    "@arweave-wallet-kit/core": "workspace:*",
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
@@ -48,7 +45,7 @@
     "arweave": "^1.15.5",
     "babel-loader": "^8.3.0",
     "prettier": "^2.8.2",
-    "react": "^18.2.0",
+    "react": "^0.1.0",
     "react-dom": "^18.2.0",
     "rollup-plugin-preserve-directives": "^0.2.0",
     "typescript": "^4.9.3",
@@ -58,10 +55,13 @@
     "vite-plugin-dts": "^1.7.1"
   },
   "peerDependencies": {
-    "@arweave-wallet-kit/core": ">= 0.1.0 < 2",
-    "@arweave-wallet-kit/styles": ">= 0.1.0 < 2",
+    "@arweave-wallet-kit/core": "workspace:*",
+    "@arweave-wallet-kit/styles": "workspace:*",
     "arweave": ">= 1.12.2 < 2",
-    "react": "^16.8.0 || 17.x || 18.x",
+    "react": "^0.1.0",
     "react-dom": "^16.8.0 || 17.x || 18.x"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
