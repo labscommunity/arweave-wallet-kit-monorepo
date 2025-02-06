@@ -1,26 +1,12 @@
 {
   "name": "@arweave-wallet-kit/arconnect-strategy",
   "version": "0.1.0",
+  "private": false,
   "description": "ArConnect strategy for the Arweave Wallet Kit",
   "repository": "https://github.com/labscommunity/wallet-kit-arconnect",
-  "author": "Marton Lederer <marton@lederer.hu>",
   "license": "MIT",
-  "private": false,
+  "author": "Marton Lederer <marton@lederer.hu>",
   "type": "module",
-  "publishConfig": {
-    "access": "public"
-  },
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "fmt": "prettier . --write"
-  },
-  "files": [
-    "dist"
-  ],
-  "main": "./dist/index.umd.js",
-  "module": "./dist/index.es.js",
-  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -28,9 +14,20 @@
       "require": "./dist/index.umd.js"
     }
   },
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc && vite build",
+    "dev": "vite",
+    "fmt": "prettier . --write"
+  },
   "devDependencies": {
-    "@arweave-wallet-kit/browser-wallet-strategy": "^0.1.0",
-    "@arweave-wallet-kit/core": "^0.1.0",
+    "@arweave-wallet-kit/browser-wallet-strategy": "workspace:*",
+    "@arweave-wallet-kit/core": "workspace:*",
     "@types/node": "^20.4.2",
     "arconnect": "^1.0.4",
     "arweave": "^1.12.2",
@@ -40,7 +37,10 @@
     "vite-plugin-dts": "^3.2.0"
   },
   "peerDependencies": {
-    "@arweave-wallet-kit/browser-wallet-strategy": ">= 0.1.0 < 2",
-    "@arweave-wallet-kit/core": ">= 0.1.0 < 2"
+    "@arweave-wallet-kit/browser-wallet-strategy": "workspace:*",
+    "@arweave-wallet-kit/core": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

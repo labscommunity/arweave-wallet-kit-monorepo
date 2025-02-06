@@ -37,8 +37,8 @@
     "vite-plugin-dts": "^3.2.0"
   },
   "peerDependencies": {
-    "@arweave-wallet-kit/browser-wallet-strategy": ">= 0.0.1-beta.1 < 2",
-    "@arweave-wallet-kit/core": ">= 0.0.1-beta.1 < 2"
+    "@arweave-wallet-kit/browser-wallet-strategy": "workspace:*",
+    "@arweave-wallet-kit/core": "workspace:*"
   },
   "publishConfig": {
     "access": "public"

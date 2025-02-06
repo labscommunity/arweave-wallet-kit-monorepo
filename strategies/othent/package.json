@@ -41,7 +41,7 @@
     "vite-plugin-dts": "^3.2.0"
   },
   "peerDependencies": {
-    "@arweave-wallet-kit/core": ">= 0.1.0 < 2"
+    "@arweave-wallet-kit/core": "workspace:*"
   },
   "dependencies": {
     "@othent/kms": "2.1.1",
