@@ -8,7 +8,8 @@ export default class WanderStrategy
 {
   public id = "wander";
   public name = "Wander";
-  public description = "Non-custodial Arweave wallet for your favorite browser";
+  public description =
+    "Non-custodial Arweave & AO wallet for your favorite browser";
   public theme = "235, 224, 255";
   public logo = "ZafBy2bAp4kj-dFUVJm-EsupwgGhcDJPTpufsa7AYsI";
   public url = "https://www.wander.app";
