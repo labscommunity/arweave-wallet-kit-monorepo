@@ -1,6 +1,6 @@
 {
   "name": "@arweave-wallet-kit/othent-strategy",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Othent strategy for the Arweave Wallet Kit",
   "repository": "https://github.com/labscommunity/wallet-kit-othent",
   "author": "Marton Lederer <marton@lederer.hu>",

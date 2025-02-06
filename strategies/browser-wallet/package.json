@@ -1,6 +1,6 @@
 {
   "name": "@arweave-wallet-kit/browser-wallet-strategy",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "description": "Browser wallet strategy for the Arweave Wallet Kit",
   "repository": "https://github.com/labscommunity/wallet-kit-browser-wallet",
