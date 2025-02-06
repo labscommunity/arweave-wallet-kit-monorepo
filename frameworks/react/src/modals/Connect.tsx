@@ -1,7 +1,7 @@
 import {
   getStrategy,
   saveStrategy,
-  Strategy
+  Strategy,
 } from "@arweave-wallet-kit/core/strategy";
 import { AppIcon, Application, Logo } from "../components/Application";
 import { Title, TitleWithParagraph } from "../components/Title";
@@ -113,7 +113,7 @@ export function ConnectModal() {
       // send success message
       postMessage({
         type: "connect_result",
-        res: true
+        res: true,
       });
 
       // close modal
@@ -123,14 +123,14 @@ export function ConnectModal() {
       saveStrategy(s.id);
       dispatch({
         type: "UPDATE_STRATEGY",
-        payload: s.id
+        payload: s.id,
       });
     } catch {
       fixupArConnectModal();
       setRetry(true);
       dispatch({
         type: "UPDATE_STRATEGY",
-        payload: false
+        payload: false,
       });
     }
 
@@ -141,7 +141,7 @@ export function ConnectModal() {
   function onClose() {
     postMessage({
       type: "connect_result",
-      res: false
+      res: false,
     });
     dispatch({ type: "CLOSE_MODAL" });
   }
@@ -162,8 +162,9 @@ export function ConnectModal() {
 
   useEffect(() => {
     (async () => {
-      // @ts-expect-error
-      const brave: boolean = navigator.brave && (await navigator.brave.isBrave());
+      const brave: boolean =
+        // @ts-expect-error
+        navigator.brave && (await navigator.brave.isBrave());
 
       setIsBrave(brave);
     })();
@@ -186,7 +187,7 @@ export function ConnectModal() {
       {(!selectedStrategy && (
         <Apps>
           {state.config.strategies
-            .sort((a, b) => a.name.localeCompare(b.name))
+            // .sort((a, b) => a.name.localeCompare(b.name))
             .map((strategy, i) => (
               <Application
                 name={strategy.name}
@@ -273,10 +274,12 @@ export function ConnectModal() {
 }
 
 const StyledTitle = withTheme(styled(Title)<{ theme: DefaultTheme }>`
-  color: rgb(${(props) =>
-    props.themed
-      ? rgbToString(props.theme.themeConfig.titleHighlight)
-      : props.theme.primaryText}) !important;
+  color: rgb(
+    ${(props) =>
+      props.themed
+        ? rgbToString(props.theme.themeConfig.titleHighlight)
+        : props.theme.primaryText}
+  ) !important;
 `);
 const StyledParagraph = withTheme(styled(Paragraph)<{ theme: DefaultTheme }>`
   color: rgb(${(props) => props.theme.secondaryText});
@@ -339,7 +342,7 @@ const WalletData = styled.div`
 const radius: Record<Radius, number> = {
   default: 14,
   minimal: 8,
-  none: 0
+  none: 0,
 };
 
 const BraveParagraph = withTheme(styled(Paragraph)<{ theme: DefaultTheme }>`

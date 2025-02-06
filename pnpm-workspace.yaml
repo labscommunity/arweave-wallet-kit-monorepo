@@ -1,5 +1,8 @@
 packages:
   - examples/*
   - strategies/*
+  # - strategies/wander
+  # - strategies/browser-wallet
+  # - strategies/arconnet
   - frameworks/*
   - packages/*
