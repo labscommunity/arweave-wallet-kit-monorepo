@@ -1,6 +1,6 @@
 {
   "name": "@arweave-wallet-kit/wander-strategy",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "description": "Wander strategy for the Arweave Wallet Kit",
   "repository": "https://github.com/labscommunity/arweave-wallet-kit-monorepo",

@@ -1,5 +1,11 @@
 # @arweave-wallet-kit/wander-strategy
 
+## 0.1.2
+
+### Patch Changes
+
+- d35a093: Update the copy for the description
+
 ## 0.1.1
 
 ### Patch Changes
