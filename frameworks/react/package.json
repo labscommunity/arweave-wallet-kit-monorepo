@@ -45,7 +45,7 @@
     "arweave": "^1.15.5",
     "babel-loader": "^8.3.0",
     "prettier": "^2.8.2",
-    "react": "^0.1.0",
+    "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rollup-plugin-preserve-directives": "^0.2.0",
     "typescript": "^4.9.3",
@@ -58,7 +58,7 @@
     "@arweave-wallet-kit/core": "workspace:*",
     "@arweave-wallet-kit/styles": "workspace:*",
     "arweave": ">= 1.12.2 < 2",
-    "react": "^0.1.0",
+    "react": "^16.8.0 || 17.x || 18.x",
     "react-dom": "^16.8.0 || 17.x || 18.x"
   },
   "publishConfig": {
