@@ -1,5 +1,11 @@
 # @arweave-wallet-kit/react
 
+## 0.1.3
+
+### Patch Changes
+
+- 816fe22: fix: react v19 support and version bump
+
 ## 0.1.2
 
 ### Patch Changes
