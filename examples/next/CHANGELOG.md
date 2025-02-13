@@ -1,5 +1,13 @@
 # next
 
+## 0.1.2
+
+### Patch Changes
+
+- 6daa58c: use correct react version
+- Updated dependencies [6daa58c]
+  - @arweave-wallet-kit/react@0.1.2
+
 ## 0.1.1
 
 ### Patch Changes
