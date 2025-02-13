@@ -57,6 +57,7 @@
   "peerDependencies": {
     "@arweave-wallet-kit/core": "workspace:*",
     "@arweave-wallet-kit/styles": "workspace:*",
+    "@permaweb/aoconnect": "^0.0.65",
     "arweave": ">= 1.12.2 < 2",
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
