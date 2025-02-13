@@ -32,7 +32,7 @@ createRoot(document.getElementById("root")!).render(
         },
       }}
       theme={{
-        displayTheme: "dark",
+        displayTheme: "light",
       }}
     >
       <App />
