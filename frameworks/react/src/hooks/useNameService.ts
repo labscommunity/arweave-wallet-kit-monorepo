@@ -73,6 +73,7 @@ export default function useNameService({
             name: data.currentLabel + ".ar",
             logo: data.avatar ? `${gatewayURL}/${data.avatar}` : undefined
           });
+          return;
         } catch (e: any) {
           console.error(
             `[Arweave Wallet Kit] Failed to fetch ans profile\n${
