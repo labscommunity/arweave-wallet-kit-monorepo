@@ -80,6 +80,7 @@ export default function useNameService({
             }`
           );
         }
+        return setNameServiceProfile(undefined);
       }
     })();
   }, [address, gatewayURL]);
