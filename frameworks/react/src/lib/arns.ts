@@ -1,6 +1,6 @@
 import { AOProcess } from "./ao";
 
-export const AO_ARNS_PROCESS = "agYcCFJtrMG6cqMuZfskIkFTGvUPddICmtQSBIoPdiA";
+export const AO_ARNS_PROCESS = "qNvAoz0TgcH7DMg8BCVn8jF32QH5L6T29VjHxhHqqGE";
 
 export type ProcessId = string;
 export type WalletAddress = string;
@@ -80,9 +80,9 @@ export async function getPrimaryArNSName(
   const primaryName = ArIO.read<ArNSPrimaryName>({
     tags: [
       { name: "Action", value: "Primary-Name" },
-      { name: "Address", value: address }
+      { name: "Address", value: address },
     ],
-    retries: 1
+    retries: 1,
   });
   return primaryName;
 }
