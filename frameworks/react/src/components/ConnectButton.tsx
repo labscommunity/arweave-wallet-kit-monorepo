@@ -8,14 +8,15 @@ import useProfileModal from "../hooks/profile";
 import useBalance from "../hooks/balance";
 import { styled } from "@linaria/react";
 import type { HTMLProps } from "react";
-import useAns from "../hooks/useAns";
 import { Button } from "./Button";
+import useNameService from "../hooks/useNameService";
 
 export default function ConnectButton({
   accent,
   showBalance = true,
   showProfilePicture = true,
   onClick,
+  useArNS: arnsOption = true,
   useAns: ansOption = true,
   profileModal: showProfileModal = true,
   ...props
@@ -29,8 +30,11 @@ export default function ConnectButton({
   // balance
   const balance = useBalance();
 
-  // ans profile
-  const ans = useAns();
+  // name service profile
+  const nameServiceProfile = useNameService({
+    useArNS: arnsOption,
+    useAns: ansOption,
+  });
 
   // profile modal
   const profileModal = useProfileModal();
@@ -58,8 +62,8 @@ export default function ConnectButton({
           <ProfileSection showBalance={showBalance}>
             {showProfilePicture && (
               <>
-                {(ans?.avatar && ansOption && (
-                  <Avatar src={ans?.avatar} draggable={false} />
+                {(nameServiceProfile?.logo && (
+                  <Avatar src={nameServiceProfile?.logo} draggable={false} />
                 )) || (
                   <AvatarPlaceholder>
                     <AvatarIcon />
@@ -67,8 +71,7 @@ export default function ConnectButton({
                 )}
               </>
             )}
-            {(ansOption && ans?.currentLabel) ||
-              formatAddress(address || "", 5)}
+            {nameServiceProfile?.name || formatAddress(address || "", 5)}
             <ExpandIcon />
           </ProfileSection>
         </>
@@ -80,7 +83,7 @@ export default function ConnectButton({
 const radius: Record<Radius, number> = {
   default: 18,
   minimal: 10,
-  none: 0
+  none: 0,
 };
 
 const Wrapper = withTheme(styled(Button)<{
@@ -126,7 +129,7 @@ const ExpandIcon = styled(ChevronDownIcon)`
 const avatarRadius: Record<Radius, string> = {
   default: "100%",
   minimal: "5px",
-  none: "0px"
+  none: "0px",
 };
 
 const Avatar = withTheme(styled.img<{ theme: DefaultTheme }>`
@@ -164,6 +167,7 @@ interface Props {
   accent?: string;
   showBalance?: boolean;
   showProfilePicture?: boolean;
+  useArNS?: boolean;
   useAns?: boolean;
   profileModal?: boolean;
 }
