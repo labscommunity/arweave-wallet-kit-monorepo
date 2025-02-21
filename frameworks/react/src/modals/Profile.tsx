@@ -15,7 +15,8 @@ import useBalance from "../hooks/balance";
 import { styled } from "@linaria/react";
 import useModal from "../hooks/modal";
 import useNameService from "../hooks/useNameService";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
+import { svgie } from "../lib/svgies";
 
 export function ProfileModal() {
   // modal controlls and statuses
@@ -50,14 +51,23 @@ export function ProfileModal() {
   // strategy
   const strategy = useActiveStrategy();
 
+  // svgie avatar
+  const svgieAvatar = useMemo(() => {
+    if (!state || !state.activeAddress) return "";
+
+    return svgie(state.activeAddress, { asDataURI: true });
+  }, [state, state.activeAddress]);
+
   return (
     <Modal {...modalController.bindings} onClose={onClose}>
       <Head onClose={onClose}>
         <StyledTitle>Profile</StyledTitle>
       </Head>
       <ProfileData>
-        <ProfilePicture profilePicture={nameServiceProfile?.logo}>
-          {!nameServiceProfile?.logo && <ProfileIcon />}
+        <ProfilePicture
+          profilePicture={nameServiceProfile?.logo || svgieAvatar}
+        >
+          {!nameServiceProfile?.logo && !svgieAvatar && <ProfileIcon />}
           <ActiveStrategy strategyTheme={strategy?.theme}>
             <img
               src={strategy?.logo ? `${gateway}/${strategy.logo}` : ""}

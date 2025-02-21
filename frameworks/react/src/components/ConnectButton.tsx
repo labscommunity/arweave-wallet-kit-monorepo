@@ -7,9 +7,10 @@ import useConnection from "../hooks/connection";
 import useProfileModal from "../hooks/profile";
 import useBalance from "../hooks/balance";
 import { styled } from "@linaria/react";
-import type { HTMLProps } from "react";
+import { useMemo, type HTMLProps } from "react";
 import { Button } from "./Button";
 import useNameService from "../hooks/useNameService";
+import { svgie } from "../lib/svgies";
 
 export default function ConnectButton({
   accent,
@@ -39,6 +40,13 @@ export default function ConnectButton({
   // profile modal
   const profileModal = useProfileModal();
 
+  // svgie avatar
+  const svgieAvatar = useMemo(() => {
+    if (!address) return "";
+
+    return svgie(address, { asDataURI: true });
+  }, [address]);
+
   return (
     <Wrapper
       accent={accent}
@@ -64,11 +72,14 @@ export default function ConnectButton({
               <>
                 {(nameServiceProfile?.logo && (
                   <Avatar src={nameServiceProfile?.logo} draggable={false} />
-                )) || (
-                  <AvatarPlaceholder>
-                    <AvatarIcon />
-                  </AvatarPlaceholder>
-                )}
+                )) ||
+                  (svgieAvatar && (
+                    <Avatar src={svgieAvatar} draggable={false} />
+                  )) || (
+                    <AvatarPlaceholder>
+                      <AvatarIcon />
+                    </AvatarPlaceholder>
+                  )}
               </>
             )}
             {nameServiceProfile?.name || formatAddress(address || "", 5)}
