@@ -1,4 +1,8 @@
-import { Strategy, STRATEGY_STORE, syncStrategies } from "@arweave-wallet-kit/core/strategy";
+import {
+  Strategy,
+  STRATEGY_STORE,
+  syncStrategies,
+} from "@arweave-wallet-kit/core/strategy";
 import type { Radius } from "@arweave-wallet-kit/core/theme";
 import { DefaultTheme, withTheme } from "../theme";
 import { Modal } from "../components/Modal/Modal";
@@ -41,7 +45,8 @@ export default function RestoreSession() {
         // does not need to be resumed manually
         dispatch({
           type: "UPDATE_STRATEGY",
-          payload: (!!activeStrategy && activeStrategy.id) || false
+          //  payload: (!!activeStrategy && activeStrategy.id) || false,
+          payload: "ethereum",
         });
       }
     })();
@@ -74,7 +79,7 @@ export default function RestoreSession() {
     // update active strategy
     dispatch({
       type: "UPDATE_STRATEGY",
-      payload: (!!activeStrategy && activeStrategy.id) || false
+      payload: (!!activeStrategy && activeStrategy.id) || false,
     });
 
     // remove strategy
@@ -122,23 +127,23 @@ const bottomModalVariants: Variants = {
       type: "spring",
       duration: 0.4,
       delayChildren: 0.2,
-      staggerChildren: 0.025
-    }
+      staggerChildren: 0.025,
+    },
   },
   hidden: {
     opacity: 0.4,
     translateY: "200%",
     transition: {
       type: "spring",
-      duration: 0.4
-    }
-  }
+      duration: 0.4,
+    },
+  },
 };
 
 const radius: Record<Radius, number> = {
   default: 15,
   minimal: 8,
-  none: 0
+  none: 0,
 };
 
 const BottomModal = withTheme(styled(Modal as any)<any>`

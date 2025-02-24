@@ -7,6 +7,7 @@ import type {
   DispatchResult,
   DataItem,
 } from "arconnect";
+import { AoSigner } from "../wallet";
 
 export default abstract class Strategy {
   // info
@@ -66,4 +67,5 @@ export default abstract class Strategy {
     listener: (e: CustomEvent<{ address: string }>) => void,
   ): void;
   public abstract signDataItem(p: DataItem): Promise<ArrayBuffer>;
+  public abstract createDataItemSigner(): Promise<AoSigner>;
 }

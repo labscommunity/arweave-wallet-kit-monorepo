@@ -33,12 +33,17 @@
     "prettier": "^3.0.0",
     "typescript": "^5.1.6",
     "vite": "^4.4.3",
-    "vite-plugin-dts": "^3.2.0"
+    "vite-plugin-dts": "^3.2.0",
+    "vite-plugin-node-polyfills": "^0.23.0"
   },
   "peerDependencies": {
     "@arweave-wallet-kit/core": "workspace:*"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@permaweb/aoconnect": "^0.0.75",
+    "zod": "^3.24.2"
   }
 }
