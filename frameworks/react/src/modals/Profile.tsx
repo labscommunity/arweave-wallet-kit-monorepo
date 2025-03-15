@@ -103,8 +103,12 @@ const btnRadius: Record<Radius, number> = {
   minimal: 10,
   none: 0,
 };
-const StyledTitle = styled(Title)``;
-const StyledParagraph = styled(Paragraph)``;
+const StyledTitle = withTheme(styled(Title)<{ theme: DefaultTheme }>`
+  color: rgb(${(props) => props.theme.primaryText});
+`);
+const StyledParagraph = withTheme(styled(Paragraph)<{ theme: DefaultTheme }>`
+  color: rgb(${(props) => props.theme.primaryText});
+`);
 
 const ProfileData = withTheme(styled.div<{ theme: DefaultTheme }>`
   display: flex;
