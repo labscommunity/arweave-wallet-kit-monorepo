@@ -1,7 +1,9 @@
-import { PropsWithChildren } from "react";
+import { type PropsWithChildren } from "react";
+
 import { ArweaveWalletKit as OriginalArweaveWalletKit } from "@arweave-wallet-kit/react";
-import { Config, defaultConfig } from "@arweave-wallet-kit/core/config";
-import { ThemeConfig } from "@arweave-wallet-kit/core/theme";
+import { type Config, defaultConfig } from "@arweave-wallet-kit/core/config";
+import { type ThemeConfig } from "@arweave-wallet-kit/core/theme";
+
 import WanderStrategy from "@arweave-wallet-kit/wander-strategy";
 import WebWalletStrategy from "@arweave-wallet-kit/webwallet-strategy";
 import OthentStrategy from "@arweave-wallet-kit/othent-strategy";
@@ -14,7 +16,7 @@ const defaultStrategies = [
   new WebWalletStrategy(),
   new OthentStrategy(),
   new BrowserWalletStrategy(),
-  new BeaconWallet()
+  new BeaconWallet(),
 ];
 
 // Define the props for the legacy ArweaveWalletKit
@@ -27,13 +29,13 @@ interface ArweaveWalletKitProps {
 export function ArweaveWalletKit({
   children,
   theme,
-  config
+  config,
 }: PropsWithChildren<ArweaveWalletKitProps>) {
   // Merge the provided config with the default config and fixed strategies
   const mergedConfig: Config = {
     ...defaultConfig,
     ...config,
-    strategies: defaultStrategies
+    strategies: defaultStrategies,
   };
 
   return (
