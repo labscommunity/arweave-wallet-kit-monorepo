@@ -29,6 +29,7 @@
     "@arweave-wallet-kit/core": "workspace:*",
     "@arweave-wallet-kit/othent-strategy": "workspace:*",
     "@arweave-wallet-kit/react": "workspace:*",
+    "@arweave-wallet-kit/styles": "workspace:*",
     "@arweave-wallet-kit/wander-strategy": "workspace:*",
     "@arweave-wallet-kit/webwallet-strategy": "0.0.1-beta.4",
     "@vela-ventures/aosync-strategy": "^1.0.3"
@@ -46,6 +47,7 @@
     "vite-plugin-dts": "^1.7.1"
   },
   "peerDependencies": {
+    "@permaweb/aoconnect": "^0.0.65",
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
   },

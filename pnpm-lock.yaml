@@ -306,12 +306,18 @@ importers:
       '@arweave-wallet-kit/react':
         specifier: workspace:*
         version: link:../react
+      '@arweave-wallet-kit/styles':
+        specifier: workspace:*
+        version: link:../../packages/wallet-kit-styles
       '@arweave-wallet-kit/wander-strategy':
         specifier: workspace:*
         version: link:../../strategies/wander
       '@arweave-wallet-kit/webwallet-strategy':
         specifier: 0.0.1-beta.4
         version: 0.0.1-beta.4(@arweave-wallet-kit/browser-wallet-strategy@strategies+browser-wallet)(@arweave-wallet-kit/core@packages+wallet-kit-core)(arweave-wallet-connector@1.0.2)
+      '@permaweb/aoconnect':
+        specifier: ^0.0.65
+        version: 0.0.65
       '@vela-ventures/aosync-strategy':
         specifier: ^1.0.3
         version: 1.0.3
