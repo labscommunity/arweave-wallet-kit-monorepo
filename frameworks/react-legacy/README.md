@@ -1,6 +1,7 @@
-# arweave-wallet-kit
+# Arweave Wallet Kit (Legacy)
 
-This is a legacy package that provides a simplified version of the Arweave Wallet Kit with a fixed set of wallet strategies.
+This package replaces the legacy `arweave-wallet-kit` by using the new modular version
+adding all the strategies known in existence at the time of writing this document.
 
 ## Installation
 
