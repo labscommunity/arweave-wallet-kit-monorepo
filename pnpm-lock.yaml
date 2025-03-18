@@ -321,6 +321,9 @@ importers:
       '@vela-ventures/aosync-strategy':
         specifier: ^1.0.3
         version: 1.0.3
+      vite-plugin-css-injected-by-js:
+        specifier: ^3.1.2
+        version: 3.5.2(vite@4.5.9(@types/node@18.19.75)(sass@1.84.0)(terser@5.39.0))
     devDependencies:
       '@types/node':
         specifier: ^18.11.18

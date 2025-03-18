@@ -1,6 +1,6 @@
 {
   "name": "arweave-wallet-kit",
-  "version": "2.0.2",
+  "version": "2.0.0",
   "private": false,
   "type": "module",
   "exports": {
@@ -32,7 +32,8 @@
     "@arweave-wallet-kit/styles": "workspace:*",
     "@arweave-wallet-kit/wander-strategy": "workspace:*",
     "@arweave-wallet-kit/webwallet-strategy": "0.0.1-beta.4",
-    "@vela-ventures/aosync-strategy": "^1.0.3"
+    "@vela-ventures/aosync-strategy": "^1.0.3",
+    "vite-plugin-css-injected-by-js": "^3.1.2"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
