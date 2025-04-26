@@ -1,6 +1,6 @@
 {
   "name": "@arweave-wallet-kit/react",
-  "version": "0.2.0",
+  "version": "0.3.2",
   "private": false,
   "type": "module",
   "exports": {
@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@callstack/react-theme-provider": "^3.0.8",
+    "@emotion/is-prop-valid": "^1.3.1",
     "@iconicicons/react": "^1.5.1",
     "@linaria/core": "^6.1.0",
     "@linaria/react": "^6.1.0",
@@ -31,7 +32,7 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
-    "@arweave-wallet-kit/core": "workspace:*",
+    "@arweave-wallet-kit/core": "^0.1.1",
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
@@ -55,9 +56,9 @@
     "vite-plugin-dts": "^1.7.1"
   },
   "peerDependencies": {
-    "@arweave-wallet-kit/core": "workspace:*",
-    "@arweave-wallet-kit/styles": "workspace:*",
-    "@permaweb/aoconnect": "^0.0.65",
+    "@arweave-wallet-kit/core": "^0.1.1",
+    "@arweave-wallet-kit/styles": "^0.1.1",
+    "@permaweb/aoconnect": ">= 0.0.65",
     "arweave": ">= 1.12.2 < 2",
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"

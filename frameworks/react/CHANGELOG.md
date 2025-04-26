@@ -1,11 +1,16 @@
 # @arweave-wallet-kit/react
 
+## 0.3.0
+
+### Minor Changes
+
+- 7824f93: support react 19
+
 ## 0.2.0
 
 ### Minor Changes
 
 - d83a63f: update arns and add svgie in react framework
-
 
 ### Patch Changes
 

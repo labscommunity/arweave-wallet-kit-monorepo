@@ -1,6 +1,6 @@
 {
-  "name": "react-simple-example-app",
-  "version": "0.0.1",
+  "name": "react-simple-legacy-example-app",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,11 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@arweave-wallet-kit/browser-wallet-strategy": "workspace:*",
-    "@arweave-wallet-kit/core": "workspace:*",
-    "@arweave-wallet-kit/othent-strategy": "workspace:*",
-    "@arweave-wallet-kit/react": "workspace:*",
-    "@arweave-wallet-kit/wander-strategy": "workspace:*",
+    "arweave-wallet-kit": "workspace:*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
