@@ -177,8 +177,8 @@ export class WagmiStrategy implements Strategy {
     if (!this.signer) {
       throw new Error("Signer not available");
     }
-    const signDataItem = await this.createDataItemSigner();
-    return signDataItem(dataItem).then(
+    const dataItemSigner = await this.createDataItemSigner();
+    return dataItemSigner(dataItem).then(
       (res) => res.raw,
     ) as unknown as ArrayBuffer;
   }
