@@ -1,13 +1,13 @@
 import type Transaction from "arweave/web/lib/transaction";
 
 import type {
-  PermissionType,
   AppInfo,
   GatewayConfig,
   DispatchResult,
   DataItem,
 } from "arconnect";
-
+import { AoSigner } from "../wallet";
+import { PermissionType } from "../wallet";
 export default abstract class Strategy {
   // info
   public abstract id: string;
@@ -66,4 +66,5 @@ export default abstract class Strategy {
     listener: (e: CustomEvent<{ address: string }>) => void,
   ): void;
   public abstract signDataItem(p: DataItem): Promise<ArrayBuffer>;
+  public abstract createDataItemSigner(): Promise<AoSigner>;
 }

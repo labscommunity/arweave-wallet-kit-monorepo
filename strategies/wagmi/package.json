@@ -1,9 +1,9 @@
 {
-  "name": "@arweave-wallet-kit/browser-wallet-strategy",
-  "version": "0.1.1",
+  "name": "@arweave-wallet-kit/wagmi-strategy",
+  "version": "0.0.1",
   "private": false,
-  "description": "Browser wallet strategy for the Arweave Wallet Kit",
-  "repository": "https://github.com/labscommunity/wallet-kit-browser-wallet",
+  "description": "Wagmi strategy for the Arweave Wallet Kit",
+  "repository": "https://github.com/labscommunity/arweave-wallet-kit-monorepo",
   "license": "MIT",
   "author": "Marton Lederer <marton@lederer.hu>",
   "type": "module",
@@ -25,26 +25,31 @@
     "dev": "vite",
     "fmt": "prettier . --write"
   },
+  "dependencies": {
+    "@metamask/eth-sig-util": "^8.2.0",
+    "@wagmi/core": "^2.16.4",
+    "ethers": "^6.13.5",
+    "viem": "^2.23.4",
+    "wagmi": "^2.14.11"
+  },
   "devDependencies": {
+    "@arweave-wallet-kit/browser-wallet-strategy": "workspace:*",
     "@arweave-wallet-kit/core": "workspace:*",
-    "@rollup/plugin-babel": "^6.0.4",
     "@types/node": "^20.4.2",
     "arconnect": "^1.0.4",
     "arweave": "^1.12.2",
     "prettier": "^3.0.0",
+    "rollup-plugin-node-polyfills": "^0.2.1",
     "typescript": "^5.1.6",
-    "vite": "^6.3.3",
+    "vite": "^4.4.3",
     "vite-plugin-dts": "^3.2.0",
-    "vite-plugin-node-polyfills": "^0.23.0"
+    "vite-plugin-node-polyfills": "^0.17.0"
   },
   "peerDependencies": {
+    "@arweave-wallet-kit/browser-wallet-strategy": "workspace:*",
     "@arweave-wallet-kit/core": "workspace:*"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "@permaweb/aoconnect": "^0.0.75",
-    "zod": "^3.24.2"
   }
 }

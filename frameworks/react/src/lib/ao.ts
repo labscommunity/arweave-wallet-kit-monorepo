@@ -70,6 +70,7 @@ export class AOProcess {
   }) {
     this.processId = processId;
     this.ao = connect({
+      MODE: "legacy",
       GRAPHQL_URL:
         connectionConfig?.GRAPHQL_URL ??
         joinUrl({

@@ -3,6 +3,7 @@ import { ArweaveWalletKit } from "@arweave-wallet-kit/react";
 import BrowserWalletStrategy from "@arweave-wallet-kit/browser-wallet-strategy";
 import ArConnectStrategy from "@arweave-wallet-kit/arconnect-strategy";
 import OthentStrategy from "@arweave-wallet-kit/othent-strategy";
+import { EthereumStrategy } from "@arweave-wallet-kit/wagmi-strategy";
 export default function Provider({ children }: { children: React.ReactNode }) {
   return (
     <ArweaveWalletKit
@@ -11,6 +12,7 @@ export default function Provider({ children }: { children: React.ReactNode }) {
           new ArConnectStrategy(),
           new BrowserWalletStrategy(),
           new OthentStrategy(),
+          new EthereumStrategy(),
         ],
         permissions: [
           "ACCESS_ADDRESS",
@@ -19,7 +21,7 @@ export default function Provider({ children }: { children: React.ReactNode }) {
           "ENCRYPT",
           "DECRYPT",
           "SIGNATURE",
-          "ACCESS_TOKENS"
+          "ACCESS_TOKENS",
         ],
         ensurePermissions: true,
         appInfo: {
@@ -28,7 +30,7 @@ export default function Provider({ children }: { children: React.ReactNode }) {
         },
       }}
       theme={{
-        displayTheme: "light",
+        displayTheme: "dark",
         // accent: { r: 72, g: 68, b: 236 },
         // titleHighlight: { r: 72, g: 68, b: 236 },
         // radius: "default",

@@ -2,15 +2,25 @@ import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 import path from "node:path";
 import { getBabelOutputPlugin } from "@rollup/plugin-babel";
+import { nodePolyfills } from "vite-plugin-node-polyfills";
 
 export default defineConfig({
-  plugins: [dts({ insertTypesEntry: true })],
+  plugins: [
+    nodePolyfills({
+      globals: {
+        Buffer: false,
+        global: false,
+        process: false,
+      },
+    }),
+    dts({ insertTypesEntry: true }),
+  ],
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
       name: "@arweave-wallet-kit/othent-strategy",
       formats: ["es", "umd"],
-      fileName: (format) => `index.${format}.js`
+      fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
       external: ["@arweave-wallet-kit/core"],
@@ -35,14 +45,14 @@ export default defineConfig({
                 targets: "> 0.25%, not dead, IE 11",
                 useBuiltIns: false, // Default：false
                 // // https://babeljs.io/docs/en/babel-preset-env#modules
-                modules: false
-              }
-            ]
-          ]
-        })
-      ]
+                modules: false,
+              },
+            ],
+          ],
+        }),
+      ],
     },
     sourcemap: false, // Enable sourcemaps for better debugging by library users
-    minify: false // Minify the output
-  }
+    minify: false, // Minify the output
+  },
 });

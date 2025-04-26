@@ -1,8 +1,13 @@
-import { useConnection, useActiveAddress } from "@arweave-wallet-kit/react";
+import {
+  useConnection,
+  useActiveAddress,
+  useApi,
+} from "@arweave-wallet-kit/react";
 
 import "./App.css";
 import { useEffect, useState } from "react";
 import Arweave from "arweave";
+import { spawn } from "@permaweb/aoconnect";
 
 const arweave = Arweave.init({
   host: "arweave.net",
@@ -14,6 +19,7 @@ function App() {
   const [balance, setBalance] = useState(0);
   const { connect, connected, disconnect } = useConnection();
   const activeAddress = useActiveAddress();
+  const strat = useApi();
 
   useEffect(() => {
     if (activeAddress) {
@@ -64,6 +70,18 @@ function App() {
                   className="py-3 px-6 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-all duration-300"
                 >
                   Disconnect
+                </button>
+                <button
+                  onClick={async () => {
+                    const processId = await spawn({
+                      module: "pb4fCvdJqwT-_bn38ERMdqnOF4weRMjoJ6bY6yfl4a8",
+                      scheduler: "_GQ33BkPtZrqxA84vM8Zk-N2aO0toNNu_C-l-rawrBA",
+                      signer: (await strat?.createDataItemSigner()) as any,
+                    });
+                    alert("spawned process with id " + processId);
+                  }}
+                >
+                  spawn
                 </button>
               </div>
             </div>

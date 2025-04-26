@@ -1,6 +1,7 @@
 import { SignatureOptions } from "arweave/web/lib/crypto/crypto-interface";
 import type Transaction from "arweave/web/lib/transaction";
 import { PermissionType } from "./permissions";
+import { DataItem } from "arconnect";
 
 /**
  * The "window.arweaveWallet" API
@@ -21,7 +22,7 @@ export interface ArweaveWalletApi {
   connect(
     permissions: PermissionType[],
     appInfo?: AppInfo,
-    gateway?: GatewayConfig
+    gateway?: GatewayConfig,
   ): Promise<void>;
 
   /**
@@ -60,7 +61,7 @@ export interface ArweaveWalletApi {
    */
   sign(
     transaction: Transaction,
-    options?: SignatureOptions
+    options?: SignatureOptions,
   ): Promise<Transaction>;
 
   /**
@@ -82,7 +83,7 @@ export interface ArweaveWalletApi {
    */
   encrypt?(
     data: BufferSource,
-    algorithm: RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams
+    algorithm: RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams,
   ): Promise<Uint8Array>;
 
   /**
@@ -97,7 +98,7 @@ export interface ArweaveWalletApi {
    */
   decrypt?(
     data: BufferSource,
-    algorithm: RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams
+    algorithm: RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams,
   ): Promise<Uint8Array>;
 
   /**
@@ -122,7 +123,7 @@ export interface ArweaveWalletApi {
   signature?(
     data: Uint8Array,
     // https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/sign#parameters
-    algorithm: AlgorithmIdentifier | RsaPssParams | EcdsaParams
+    algorithm: AlgorithmIdentifier | RsaPssParams | EcdsaParams,
   ): Promise<Uint8Array>;
 
   /**
@@ -165,3 +166,7 @@ export interface GatewayConfig {
   port: number;
   protocol: "http" | "https";
 }
+
+export type AoSigner = (
+  dataItem: DataItem,
+) => Promise<{ id: string; raw: ArrayBufferLike }>;

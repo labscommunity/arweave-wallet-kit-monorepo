@@ -3,11 +3,12 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
 import { ArweaveWalletKit } from "arweave-wallet-kit";
-
+import WanderStrategy from "@arweave-wallet-kit/wander-strategy";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ArweaveWalletKit
       config={{
+        strategies: [new WanderStrategy()],
         permissions: [
           "ACCESS_ADDRESS",
           "SIGN_TRANSACTION",

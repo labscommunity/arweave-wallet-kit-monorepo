@@ -3,8 +3,10 @@ import type { ConnectMsg } from "./connection/connect";
 import useActiveStrategy from "./strategy";
 import useGlobalState from "./global";
 import { useEffect, useRef } from "react";
-import { comparePermissions } from "../utils";
-import { PermissionType } from "@arweave-wallet-kit/core/wallet";
+import {
+  PermissionType,
+  comparePermissions,
+} from "@arweave-wallet-kit/core/wallet";
 
 /**
  * Given permissions hook
