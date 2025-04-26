@@ -38,7 +38,8 @@
     "prettier": "^3.0.0",
     "typescript": "^5.1.6",
     "vite": "^4.4.3",
-    "vite-plugin-dts": "^3.2.0"
+    "vite-plugin-dts": "^3.2.0",
+    "vite-plugin-node-polyfills": "^0.23.0"
   },
   "peerDependencies": {
     "@arweave-wallet-kit/core": "workspace:*"

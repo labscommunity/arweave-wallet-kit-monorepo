@@ -7,7 +7,10 @@ import {
 import type { SignatureOptions } from "arweave/web/lib/crypto/crypto-interface";
 import type { Strategy } from "@arweave-wallet-kit/core/strategy";
 import type Transaction from "arweave/web/lib/transaction";
-import type { DataItem, PermissionType } from "arconnect";
+import type { DataItem } from "arconnect";
+import { AoSigner } from "@arweave-wallet-kit/core/src/wallet";
+import { createAoSigner } from "./utils";
+import { PermissionType } from "@arweave-wallet-kit/core/wallet";
 /**
  * Any kind of browser wallet, with an
  * ArConnect-like injected API
@@ -156,5 +159,9 @@ export default class BrowserWalletStrategy implements Strategy {
     listener: (e: CustomEvent<{ address: string }>) => void,
   ) {
     removeEventListener("walletSwitch", listener);
+  }
+
+  public async createDataItemSigner(): Promise<AoSigner> {
+    return createAoSigner(window.arweaveWallet as Window["arweaveWallet"]);
   }
 }
