@@ -46,7 +46,6 @@ export default function RestoreSession() {
         dispatch({
           type: "UPDATE_STRATEGY",
           payload: (!!activeStrategy && activeStrategy.id) || false,
-          //  payload: "ethereum",
         });
       }
     })();
