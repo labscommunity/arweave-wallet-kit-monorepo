@@ -8,7 +8,7 @@ import WanderStrategy from "@arweave-wallet-kit/wander-strategy";
 import WebWalletStrategy from "@arweave-wallet-kit/webwallet-strategy";
 import OthentStrategy from "@arweave-wallet-kit/othent-strategy";
 import BrowserWalletStrategy from "@arweave-wallet-kit/browser-wallet-strategy";
-//import BeaconWallet from "@vela-ventures/aosync-strategy";
+// import BeaconWallet from "@vela-ventures/aosync-strategy";
 import { Strategy } from "@arweave-wallet-kit/core/strategy";
 
 // Define the default strategies that will always be used
@@ -17,6 +17,7 @@ const defaultStrategies = [
   new WebWalletStrategy(),
   new OthentStrategy(),
   new BrowserWalletStrategy(),
+  // This does not need to be a default strategy. Commenting it out because its breaking the build due to type errors.
   // new BeaconWallet(),
 ];
 
