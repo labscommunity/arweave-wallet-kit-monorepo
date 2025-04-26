@@ -45,8 +45,8 @@ export default function RestoreSession() {
         // does not need to be resumed manually
         dispatch({
           type: "UPDATE_STRATEGY",
-          //  payload: (!!activeStrategy && activeStrategy.id) || false,
-          payload: "ethereum",
+          payload: (!!activeStrategy && activeStrategy.id) || false,
+          //  payload: "ethereum",
         });
       }
     })();

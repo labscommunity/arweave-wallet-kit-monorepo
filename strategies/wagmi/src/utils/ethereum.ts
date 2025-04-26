@@ -94,7 +94,23 @@ export function createBrowserEthereumDataItemSigner(
       }),
     };
     const ethSigner = new InjectedEthereumSigner(provider);
-    await ethSigner.setPublicKey();
+    if (window?.localStorage) {
+      // This caches the public key in the browser's local storage to avoid asking for it every time
+      const address = await ethersSigner.getAddress();
+      const publicKey = window.localStorage.getItem(`hexPublicKey-${address}`);
+      if (publicKey) {
+        ethSigner.publicKey = Buffer.from(publicKey, "hex");
+      } else {
+        await ethSigner.setPublicKey();
+        window.localStorage.setItem(
+          `hexPublicKey-${address}`,
+          ethSigner.publicKey.toString("hex"),
+        );
+      }
+    } else {
+      await ethSigner.setPublicKey();
+    }
+
     const dataItem = createData(data, ethSigner, {
       tags,
       target,

@@ -37,7 +37,7 @@ export function ArweaveWalletKit({
   const mergedConfig: Config = {
     ...defaultConfig,
     ...config,
-    strategies: defaultStrategies as Strategy[],
+    strategies: defaultStrategies,
   };
 
   return (
