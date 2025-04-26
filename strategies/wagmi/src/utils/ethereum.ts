@@ -20,7 +20,7 @@ import { AoSigner } from "@arweave-wallet-kit/core/src/wallet/types.js";
 import { metaMask } from "wagmi/connectors";
 
 // Initialize wagmi config
-export const ethereumWagmiConfig = createConfig({
+export const ethereumWagmiConfig: WagmiConfig = createConfig({
   connectors: [metaMask({})],
   chains: [mainnet, sepolia],
   transports: {

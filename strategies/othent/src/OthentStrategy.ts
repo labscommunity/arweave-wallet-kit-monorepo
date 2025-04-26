@@ -3,7 +3,6 @@ import type {
   AppInfo,
   DispatchResult,
   GatewayConfig,
-  PermissionType,
   DataItem as ArconnectDataItem,
 } from "arconnect";
 import { Strategy } from "@arweave-wallet-kit/core/strategy";
@@ -11,6 +10,7 @@ import type Transaction from "arweave/web/lib/transaction";
 import { Othent, OthentOptions, AppInfo as OthentAppInfo } from "@othent/kms";
 import { AoSigner } from "@arweave-wallet-kit/core/src/wallet";
 import { DataItem } from "@dha-team/arbundles";
+import { PermissionType } from "@arweave-wallet-kit/core/wallet";
 
 export default class OthentStrategy implements Strategy {
   public id: "othent" = "othent";

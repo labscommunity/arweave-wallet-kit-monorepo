@@ -5,7 +5,7 @@ import {
   reconnect,
   watchAccount,
 } from "@wagmi/core";
-import { DataItem, DispatchResult, PermissionType } from "arconnect";
+import { DataItem, DispatchResult } from "arconnect";
 import { SignatureOptions } from "arweave/node/lib/crypto/crypto-interface";
 import Transaction from "arweave/node/lib/transaction";
 import { ethers } from "ethers";
@@ -20,6 +20,7 @@ import {
 } from "./utils/ethereum.js";
 import Strategy from "@arweave-wallet-kit/core/src/strategy/Strategy.js";
 import { AoSigner } from "@arweave-wallet-kit/core/src/wallet/types.js";
+import { PermissionType } from "@arweave-wallet-kit/core/wallet";
 
 export type WagmiStrategyOptions = {
   id: string;

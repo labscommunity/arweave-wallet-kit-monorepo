@@ -27,12 +27,13 @@
   },
   "devDependencies": {
     "@arweave-wallet-kit/core": "workspace:*",
+    "@rollup/plugin-babel": "^6.0.4",
     "@types/node": "^20.4.2",
     "arconnect": "^1.0.4",
     "arweave": "^1.12.2",
     "prettier": "^3.0.0",
     "typescript": "^5.1.6",
-    "vite": "^4.4.3",
+    "vite": "^6.3.3",
     "vite-plugin-dts": "^3.2.0",
     "vite-plugin-node-polyfills": "^0.23.0"
   },
