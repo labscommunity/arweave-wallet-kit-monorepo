@@ -1,6 +1,6 @@
 {
   "name": "@arweave-wallet-kit/wander-connect-strategy",
-  "version": "0.1.2",
+  "version": "0.0.1",
   "private": false,
   "description": "Wander Connect strategy for the Arweave Wallet Kit",
   "repository": "https://github.com/labscommunity/arweave-wallet-kit-monorepo",
@@ -25,6 +25,9 @@
     "dev": "vite",
     "fmt": "prettier . --write"
   },
+  "dependencies": {
+    "@wanderapp/connect": "^0.1.1"
+  },
   "devDependencies": {
     "@arweave-wallet-kit/browser-wallet-strategy": "workspace:*",
     "@arweave-wallet-kit/core": "workspace:*",
@@ -42,8 +45,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "@wanderapp/connect": "^0.1.1"
   }
 }
