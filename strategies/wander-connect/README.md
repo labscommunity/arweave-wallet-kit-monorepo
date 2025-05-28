@@ -1,4 +1,4 @@
-# Wander Strategy
+# Wander Connect Strategy
 
 Wander Connect support for the Arweave Wallet Kit
 
