@@ -358,6 +358,9 @@ importers:
       '@arweave-wallet-kit/styles':
         specifier: workspace:*
         version: link:../../packages/wallet-kit-styles
+      '@arweave-wallet-kit/wander-connect-strategy':
+        specifier: workspace:*
+        version: link:../../strategies/wander-connect
       '@arweave-wallet-kit/wander-strategy':
         specifier: workspace:*
         version: link:../../strategies/wander

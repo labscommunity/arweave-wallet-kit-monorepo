@@ -5,6 +5,7 @@ import { type Config, defaultConfig } from "@arweave-wallet-kit/core/config";
 import { type ThemeConfig } from "@arweave-wallet-kit/core/theme";
 
 import WanderStrategy from "@arweave-wallet-kit/wander-strategy";
+import WanderConnectStrategy from "@arweave-wallet-kit/wander-connect-strategy";
 import WebWalletStrategy from "@arweave-wallet-kit/webwallet-strategy";
 import OthentStrategy from "@arweave-wallet-kit/othent-strategy";
 import BrowserWalletStrategy from "@arweave-wallet-kit/browser-wallet-strategy";
@@ -13,6 +14,7 @@ import BeaconWallet from "@vela-ventures/aosync-strategy";
 // Define the default strategies that will always be used
 const defaultStrategies = [
   new WanderStrategy(),
+  new WanderConnectStrategy(),
   new WebWalletStrategy(),
   new OthentStrategy(),
   new BrowserWalletStrategy(),
