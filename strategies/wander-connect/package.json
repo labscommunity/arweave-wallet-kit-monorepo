@@ -26,7 +26,7 @@
     "fmt": "prettier . --write"
   },
   "dependencies": {
-    "@wanderapp/connect": "^0.1.1"
+    "@wanderapp/connect": "^0.1.3"
   },
   "devDependencies": {
     "@arweave-wallet-kit/browser-wallet-strategy": "workspace:*",

@@ -19,7 +19,6 @@ export default class WanderConnectStrategy
   public name = "Wander Connect";
   public description =
     "Secure non-custodial Arweave & AO wallet with social logins";
-  //   public theme = "214, 89, 48";
   public theme = "243, 248, 252";
   public logo = "9n0Msz31a0NQc6rbCMqunzDQGzz_TuxyeR5MuCrHsPI";
   public url = "https://www.wander.app/connect";
@@ -46,61 +45,39 @@ export default class WanderConnectStrategy
     appInfo?: AppInfo,
     gateway?: GatewayConfig,
   ) {
-    // If we're already authenticated, just use the existing wallet connection
+    // Use existing connection if user is already authenticated
     if (this._isAuthenticated && this._arweaveWallet) {
       return this._arweaveWallet.connect(permissions, appInfo, gateway);
     }
 
-    // Create a new authentication promise
+    // We need a promise to be fulfilled in order to later call connect
     const authPromise = new Promise<void>((resolve, reject) => {
-      // Only instantiate WanderConnect when connect is called
+      // Only instance WanderConnect when AWK connect is called
       this._wanderConnect = new WanderConnect({
         clientId: this._options?.clientId || "FREE_TRIAL",
-
-        /** Hide Wander BE Button */
-        hideBE: true,
-
-        /** Hide Wander Connect Button */
-        // TODO: use this option when supported
-        // button: false,
-        button: {
-          position: "bottom-right",
-          //   customStyles: `
-          //         /* Position the button container */
-          //         :host {
-          //             display:none;
-          //         }
-          //         `,
-        },
+        hideBE: true, // Hide BE button
+        button: false, // Hide WC buton
         iframe: {
-          /** Choose Modal for Iframe Layout */
           routeLayout: {
-            auth: "modal",
-            default: "popup",
-            account: "popup",
-            "auth-request": "modal",
+            auth: "modal", // Use Modal for auth views
+            default: "modal", // Use Popup for default views
+            account: "modal", // Use Popup for account views
+            "auth-request": "modal", // Use Modal for auth request views
           },
-          /** Bring iframe on top of AWK */
+          // Put iframe on top of AWK
           customStyles: `
             .iframe-wrapper, .iframe-wrapper.show {
                 z-index: 999999 !important;
             }
-
             .iframe {
                 z-index: 999999 !important;
             }
-            /*
-            .backdrop, .backdrop.show {
-                display: none !important;
-            }
-            */
             `,
         },
-
-        ...this._options,
+        ...this._options, // use options passed on Strategy constructor
         onAuth: (authInfo) => {
-          // Call the original onAuth if provided in options
           if (this._options?.onAuth) {
+            // Call original onAuth if provided in options
             this._options.onAuth(authInfo);
           }
 
@@ -108,25 +85,27 @@ export default class WanderConnectStrategy
           if (authInfo.authStatus === "authenticated") {
             this._isAuthenticated = true;
             this._arweaveWallet = window.arweaveWallet;
+            this._wanderConnect.close();
             resolve();
           } else {
             this._isAuthenticated = false;
-            // this._wanderConnect.open();
-            // reject(new Error(`Authentication failed: ${authInfo.authStatus}`));
+            console.log(`[AWK] WC Auth: ${authInfo.authStatus}`);
           }
         },
       });
+      // Open Wander Connect once constructor finishes
       this._wanderConnect.open();
-      // WanderConnect automatically starts authentication when instantiated
     });
 
-    // Wait for authentication to complete
     try {
-      await authPromise;
-      // Now call the actual wallet connect method
+      await authPromise; // Wait for authentication to complete
+
       return this._arweaveWallet.connect(permissions, appInfo, gateway);
     } catch (error) {
       // Clean up if authentication fails
+      try {
+        this._wanderConnect.destroy();
+      } catch {}
       this._wanderConnect = null;
       this._isAuthenticated = false;
       throw error;
@@ -140,7 +119,6 @@ export default class WanderConnectStrategy
   }
 
   public async disconnect() {
-    // await this._ensureConnected();
     const result = await this._arweaveWallet.disconnect();
     this._isAuthenticated = false;
     this._wanderConnect.destroy();
