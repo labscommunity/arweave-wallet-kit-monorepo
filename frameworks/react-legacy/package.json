@@ -30,6 +30,7 @@
     "@arweave-wallet-kit/othent-strategy": "workspace:*",
     "@arweave-wallet-kit/react": "workspace:*",
     "@arweave-wallet-kit/styles": "workspace:*",
+    "@arweave-wallet-kit/wander-connect-strategy": "workspace:*",
     "@arweave-wallet-kit/wander-strategy": "workspace:*",
     "@arweave-wallet-kit/webwallet-strategy": "0.0.1-beta.4",
     "@vela-ventures/aosync-strategy": "^1.0.3",

@@ -25,6 +25,7 @@ In Arweave Wallet Kit, a _strategy_ is an implementation of an Arweave wallet wi
 The library currently supports the following wallets:
 
 - [Wander.app](https://wander.app)
+- [Wander Connnect](https://wander.app/connect)
 - [Arweave.app](https://arweave.app)
 - [Othent](https://othent.io)
 - General Browser Wallets
@@ -41,6 +42,7 @@ The core and styles package are peer dependencies for the the `react` package.
 Alongside these, the strategies for each wallet have their own dedicated packages as well:
 
 - `@arweave-wallet-kit/wander-strategy`
+- `@arweave-wallet-kit/wander-connect-strategy`
 - `@arweave-wallet-kit/browser-wallet-strategy`
 - `@arweave-wallet-kit/othent-strategy`
 - `@arweave-wallet-kit/webwallet-strategy`
@@ -60,6 +62,7 @@ pnpm add @arweave-wallet-kit/core \
          @arweave-wallet-kit/styles \
          @arweave-wallet-kit/react \
          @arweave-wallet-kit/wander-strategy \
+         @arweave-wallet-kit/wander-connect-strategy \
          @arweave-wallet-kit/webwallet-strategy \
          @arweave-wallet-kit/othent-strategy \
          @arweave-wallet-kit/browser-wallet-strategy
@@ -77,6 +80,7 @@ import App from "./App.tsx";
 import "./index.css";
 import { ArweaveWalletKit } from "@arweave-wallet-kit/react";
 import WanderStrategy from "@arweave-wallet-kit/wander-strategy";
+import WanderConnectStrategy from "@arweave-wallet-kit/wander-connnect-strategy";
 import OthentStrategy from "@arweave-wallet-kit/othent-strategy";
 import BrowserWalletStrategy from "@arweave-wallet-kit/browser-wallet-strategy";
 import WebWalletStrategy from "@arweave-wallet-kit/webwallet-strategy";
@@ -94,6 +98,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         ensurePermissions: true,
         strategies: [
           new WanderStrategy(),
+          new WanderConnectStrategy(),
           new OthentStrategy(),
           new BrowserWalletStrategy(),
           new WebWalletStrategy(),
@@ -112,6 +117,6 @@ Once the provider is setup, you can either use the Wallet Kit’s functionality 
 
 ## Extending functionality or adding a wallet
 
-If your wallet implements the common `arweaveWallet` API that wallets like `Wander` and `Arweave.app` inject by default, the regular `browser-wallet-strategy` should work out of the box.
+If your wallet implements the common `arweaveWallet` API that wallets like `Wander`, `Wander Connect` and `Arweave.app` inject by default, the regular `browser-wallet-strategy` should work out of the box.
 
 In order to add another wallet that is not in this list, you need to have a package that implements the abstract class [`Strategy.ts`](https://github.com/labscommunity/arweave-wallet-kit-monorepo/blob/main/packages/wallet-kit-core/src/strategy/Strategy.ts) to interface between the kit and the corresponding wallet.
